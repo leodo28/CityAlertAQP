@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".Actividades.Act_InicioSupervisor"
             android:label="@string/title_activity_iniciosupervisor2"
@@ -19,6 +19,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".Actividades.Act_Serenos"
+            android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
     </application>
 
