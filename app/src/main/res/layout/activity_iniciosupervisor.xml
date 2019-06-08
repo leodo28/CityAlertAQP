@@ -4,51 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".iniciosupervisor">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Nombre"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="1"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nombre"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/nombre"
-        android:hint="Nombre"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nombre"
+            android:hint="Nombre"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Apellido"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="1"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Apellido"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Apellido"
-        android:textAlignment="textStart"
-        android:id="@+id/apellido"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Apellido"
+            android:textAlignment="textStart"
+            android:id="@+id/apellido"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
 
         <TextView
             android:layout_width="match_parent"
