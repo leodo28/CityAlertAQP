@@ -1,6 +1,6 @@
-package com.example.tecsup.cityalertarequipa;
+package com.example.tecsup.cityalertarequipa.Clases;
 
-public class Persona {
+public class Cls_Persona {
     String nombre;
     String apellido;
     String dni;
@@ -8,10 +8,10 @@ public class Persona {
     String telefono;
     String direccion;
 
-    public Persona() {
+    public Cls_Persona() {
     }
 
-    public Persona(String nombre, String apellido, String dni, String correo, String telefono, String direccion) {
+    public Cls_Persona(String nombre, String apellido, String dni, String correo, String telefono, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
