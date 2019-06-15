@@ -1,12 +1,12 @@
 package com.example.tecsup.cityalertarequipa.Actividades;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,60 +16,32 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_InicioSupervisor extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
-    TextView nombre,apellido,DNI,correo,telefono,direccion,nombreapp;
+public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
-
+    TextView nombreapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciosupervisor);
+        setContentView(R.layout.activity_perfil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        Intent i = getIntent();
+        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        sup = new Cls_Persona("Pepito","Dospalotes","23684505",
-                "p.dospalotes@gmail.com","948758935","psj s/n");
-        nombre = findViewById(R.id.nombre);
-        apellido = findViewById(R.id.apellido);
-        DNI = findViewById(R.id.dni);
-        correo = findViewById(R.id.correo);
-        telefono = findViewById(R.id.telefono);
-        direccion = findViewById(R.id.direccion);
-
-
-        nombre.setText(sup.getNombre()+"");
-        apellido.setText(sup.getApellido()+"");
-        DNI.setText(sup.getDni()+"");
-        correo.setText(sup.getCorreo()+"");
-        telefono.setText(sup.getTelefono()+"");
-        direccion.setText(sup.getDireccion()+"");
-
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -138,7 +110,7 @@ public class Act_InicioSupervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

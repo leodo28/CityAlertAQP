@@ -11,11 +11,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
 public class Act_Incidencia extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Cls_Persona sup;
+    TextView nombreapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,9 @@ public class Act_Incidencia extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent i = getIntent();
+        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +67,8 @@ public class Act_Incidencia extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
+        nombreapp=findViewById(R.id.Nombreapp);
+        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
         return true;
     }
 
@@ -79,26 +90,40 @@ public class Act_Incidencia extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_InicioSupervisor.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_Serenos.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
-        } else if (id == R.id.incidencias) {
+        }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
-        }/* else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }else if (id == R.id.ubicacion) {
+            Intent i = new Intent(this,Act_Ubicacion.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.telefonos) {
+            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.editar) {
+            Intent i = new Intent(this,Act_Perfil.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.logout) {
+            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
+            i.putExtra("supervisor",sup);
+            startActivity(i);
         }
-*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

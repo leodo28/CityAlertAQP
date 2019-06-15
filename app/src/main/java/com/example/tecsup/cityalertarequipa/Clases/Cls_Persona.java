@@ -1,6 +1,8 @@
 package com.example.tecsup.cityalertarequipa.Clases;
 
-public class Cls_Persona {
+import java.io.Serializable;
+
+public class Cls_Persona implements Serializable {
     String nombre;
     String apellido;
     String dni;

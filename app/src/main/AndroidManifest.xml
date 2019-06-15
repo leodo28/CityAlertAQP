@@ -23,8 +23,20 @@
         <activity
             android:name=".Actividades.Act_Serenos"
             android:label="@string/title_activity_iniciosupervisor2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Actividades.Act_Incidencia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.Act_Incidencia"
+            android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.Act_Ubicacion"
+            android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.Act_TelefonoEmergencia"
+            android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Actividades.Act_Perfil"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

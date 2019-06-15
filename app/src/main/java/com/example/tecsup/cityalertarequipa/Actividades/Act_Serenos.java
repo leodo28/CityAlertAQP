@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tecsup.cityalertarequipa.Adaptadores.CustomExpandableListAdapter;
@@ -33,6 +34,8 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     List<String> expandableListTitle;
     List<String> serenos = new ArrayList<String>();
     HashMap<String, List<String>> expandableListDetail;
+    Cls_Persona sup;
+    TextView nombreapp;
 
 
     @Override
@@ -41,6 +44,9 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_serenos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent i = getIntent();
+        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
         Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
                 "luis@gmail.com","9475849554","psj s/n");
@@ -123,6 +129,8 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
+        nombreapp=findViewById(R.id.Nombreapp);
+        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
         return true;
     }
 
@@ -142,28 +150,41 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id = menuItem.getItemId();
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_InicioSupervisor.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_Serenos.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia.class);
+            i.putExtra("supervisor",sup);
             startActivity(i);
-        }/* else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }else if (id == R.id.ubicacion) {
+            Intent i = new Intent(this,Act_Ubicacion.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.telefonos) {
+            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.editar) {
+            Intent i = new Intent(this,Act_Perfil.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        }else if (id == R.id.logout) {
+            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
+            i.putExtra("supervisor",sup);
+            startActivity(i);
         }
-*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         drawer.closeDrawer(GravityCompat.START);
         return true;
