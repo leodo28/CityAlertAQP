@@ -151,6 +151,9 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_Serenos.class);
             startActivity(i);
+        }else if (id == R.id.incidencias) {
+            Intent i = new Intent(this,Act_Incidencia.class);
+            startActivity(i);
         }/* else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
