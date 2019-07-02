@@ -1,13 +1,22 @@
 package com.example.tecsup.cityalertarequipa.Actividades;
 
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,9 +25,23 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_Ubicacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Act_Ubicacion extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     Cls_Persona sup;
     TextView nombreapp;
+    private GoogleMap mMap;
+
+    Cls_Persona sereno1 = new Cls_Persona("Pepe","Paz","3247324525"
+            ,"sereno1@gmail.com","934832424","S/N venezuela"
+            ,-16.429299,-71.519191);
+
+    Cls_Persona sereno2 = new Cls_Persona("Jose","Guerra","8721643834"
+            ,"sereno2@gmail.com","987457359","S/N independencia"
+            ,-16.431299,-71.529191);
+
+    Cls_Persona sereno3 = new Cls_Persona("Patrick","Velasquez","9734774383"
+            ,"sereno3@gmail.com","976463930","S/N goyeneche"
+            ,-16.441299,-71.539191);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +55,32 @@ public class Act_Ubicacion extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng ser1 = new LatLng(sereno1.getLatitud(), sereno1.getLongitud());
+        mMap.addMarker(new MarkerOptions().position(ser1).title(sereno1.getNombre()));
+        LatLng ser2 = new LatLng(sereno2.getLatitud(), sereno2.getLongitud());
+        mMap.addMarker(new MarkerOptions().position(ser2).title(sereno2.getNombre()));
+        LatLng ser3 = new LatLng(sereno3.getLatitud(), sereno3.getLongitud());
+        mMap.addMarker(new MarkerOptions().position(ser3).title(sereno3.getNombre()));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ser1));
     }
 
     @Override

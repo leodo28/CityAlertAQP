@@ -9,6 +9,8 @@ public class Cls_Persona implements Serializable {
     String correo;
     String telefono;
     String direccion;
+    double latitud;
+    double longitud;
 
     public Cls_Persona() {
     }
@@ -20,6 +22,17 @@ public class Cls_Persona implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
+    }
+
+    public Cls_Persona(String nombre, String apellido, String dni, String correo, String telefono, String direccion, double latitud, double longitud) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public String getNombre() {
@@ -68,5 +81,21 @@ public class Cls_Persona implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 }

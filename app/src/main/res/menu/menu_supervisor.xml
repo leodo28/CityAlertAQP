@@ -19,7 +19,7 @@
         <item
             android:id="@+id/ubicacion"
             android:icon="@drawable/mapa"
-            android:title="Ubicacion" />
+            android:title="Ubicacion de Serenos" />
         <item
             android:id="@+id/telefonos"
             android:icon="@drawable/fono"
