@@ -6,6 +6,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
@@ -80,7 +81,12 @@ public class Act_Ubicacion extends AppCompatActivity
         LatLng ser3 = new LatLng(sereno3.getLatitud(), sereno3.getLongitud());
         mMap.addMarker(new MarkerOptions().position(ser3).title(sereno3.getNombre()));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ser1));
+        CameraPosition cameraPosition = CameraPosition.builder()
+                .target(ser1)
+                .zoom(13)
+                .build();
+
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
     @Override
