@@ -12,16 +12,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="40dp"
             android:text="Telefonos de Emergencia"
             android:textAlignment="textStart"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_margin="8dp"
-            android:layout_weight="1"
+
             />
+
+        <Button
+            android:id="@+id/btn_policia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:text="POLICIA" />
+
+        <Button
+            android:id="@+id/btn_bomberos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:text="BOMBEROS" />
+
+        <Button
+            android:id="@+id/btn_ambulancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:text="AMBULANCIA" />
+
 
     </LinearLayout>
 

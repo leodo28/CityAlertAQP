@@ -6,10 +6,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +23,7 @@ import com.example.tecsup.cityalertarequipa.R;
 public class Act_TelefonoEmergencia extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
     TextView nombreapp;
+    Button policia,bombero,ambulancia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,37 @@ public class Act_TelefonoEmergencia extends AppCompatActivity implements Navigat
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        policia = findViewById(R.id.btn_policia);
+        bombero = findViewById(R.id.btn_bomberos);
+        ambulancia = findViewById(R.id.btn_ambulancia);
+
+        policia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:105"));
+                startActivity(i);
+            }
+        });
+
+        bombero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:106"));
+                startActivity(i);
+            }
+        });
+
+        ambulancia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:102"));
+                startActivity(i);
+            }
+        });
     }
 
     @Override
