@@ -10,6 +10,8 @@ import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +20,8 @@ import com.example.tecsup.cityalertarequipa.R;
 
 public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
-    TextView nombreapp;
+    TextView nombreapp,subtitulo;
+    Button editar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,27 @@ public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNa
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        subtitulo = findViewById(R.id.subtitulo);
+
+        editar = findViewById(R.id.btn_editar);
+        Bundle b = i.getExtras();
+        int o = b.getInt("codigo");
+        if(!(o ==1)){
+            editar.setText("Editar");
+            subtitulo.setText("Editar Perfil");
+        }
+        else{
+            editar.setText("Agregar");
+            subtitulo.setText("Agregar Sereno");
+        }
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override
