@@ -138,7 +138,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
                 }
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                         .get(childPosition).equals("Eliminar")){
-                    
+
                 }
 
                 return false;
