@@ -50,9 +50,11 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
         Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
-                "luis@gmail.com","9475849554","psj s/n");
+                "luis@gmail.com","9475849554","psj s/n"
+                ,-16.429299,-71.519191);
         Cls_Persona p2 = new Cls_Persona("Beto","Cruz","632438844",
-                "beto@gmail.com","9873432984","psj s/n");
+                "beto@gmail.com","9873432984","psj s/n",
+                -16.431299,-71.529191);
         serenos.add(p1.getNombre()+" "+p1.getApellido());
         serenos.add(p2.getNombre()+" "+p2.getApellido());
 
@@ -113,6 +115,32 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
                                 expandableListTitle.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT
                 ).show();
+
+                if(expandableListDetail.get(expandableListTitle.get(groupPosition))
+                            .get(childPosition).equals("Geolocalizacion")){
+                        Intent i = new Intent(getApplicationContext(),Act_Ubicacion.class);
+                        i.putExtra("supervisor",sup);
+                        startActivity(i);
+                }
+
+                if(expandableListDetail.get(expandableListTitle.get(groupPosition))
+                        .get(childPosition).equals("Incidencias")){
+                    Intent i = new Intent(getApplicationContext(),Act_Incidencia.class);
+                    i.putExtra("supervisor",sup);
+                    startActivity(i);
+                }
+
+                if(expandableListDetail.get(expandableListTitle.get(groupPosition))
+                        .get(childPosition).equals("Editar")){
+                    Intent i = new Intent(getApplicationContext(),Act_Perfil.class);
+                    i.putExtra("supervisor",sup);
+                    startActivity(i);
+                }
+                if(expandableListDetail.get(expandableListTitle.get(groupPosition))
+                        .get(childPosition).equals("Eliminar")){
+                    
+                }
+
                 return false;
             }
         });
