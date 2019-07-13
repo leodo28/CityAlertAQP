@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Actividades_Supervisor.Act_Incidencia"
-    tools:showIn="@layout/app_bar_incidencia">
+    tools:context=".Actividades_Sereno.Act_Incidencia_sereno"
+    tools:showIn="@layout/app_bar_incidencia_sereno">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

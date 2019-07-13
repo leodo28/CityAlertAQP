@@ -1,54 +1,33 @@
-package com.example.tecsup.cityalertarequipa.Actividades;
+package com.example.tecsup.cityalertarequipa.Actividades_Supervisor;
 
 import android.content.Intent;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
-
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_Ubicacion extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+public class Act_TelefonoEmergencia extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
     TextView nombreapp;
-    private GoogleMap mMap;
-
-    Cls_Persona sereno1 = new Cls_Persona("Pepe","Paz","3247324525"
-            ,"sereno1@gmail.com","934832424","S/N venezuela"
-            ,-16.429299,-71.519191);
-
-    Cls_Persona sereno2 = new Cls_Persona("Jose","Guerra","8721643834"
-            ,"sereno2@gmail.com","987457359","S/N independencia"
-            ,-16.431299,-71.529191);
-
-    Cls_Persona sereno3 = new Cls_Persona("Patrick","Velasquez","9734774383"
-            ,"sereno3@gmail.com","976463930","S/N goyeneche"
-            ,-16.441299,-71.539191);
-
+    Button policia,bombero,ambulancia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ubicacion);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_telefonoemergencia);Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,37 +35,42 @@ public class Act_Ubicacion extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
+        policia = findViewById(R.id.btn_policia);
+        bombero = findViewById(R.id.btn_bomberos);
+        ambulancia = findViewById(R.id.btn_ambulancia);
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        policia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:105"));
+                startActivity(i);
+            }
+        });
 
-        // Add a marker in Sydney and move the camera
-        LatLng ser1 = new LatLng(sereno1.getLatitud(), sereno1.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser1).title(sereno1.getNombre()));
-        LatLng ser2 = new LatLng(sereno2.getLatitud(), sereno2.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser2).title(sereno2.getNombre()));
-        LatLng ser3 = new LatLng(sereno3.getLatitud(), sereno3.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser3).title(sereno3.getNombre()));
+        bombero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:106"));
+                startActivity(i);
+            }
+        });
 
-        CameraPosition cameraPosition = CameraPosition.builder()
-                .target(ser1)
-                .zoom(13)
-                .build();
-
-        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        ambulancia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:102"));
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -160,6 +144,7 @@ public class Act_Ubicacion extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         drawer.closeDrawer(GravityCompat.START);
         return true;

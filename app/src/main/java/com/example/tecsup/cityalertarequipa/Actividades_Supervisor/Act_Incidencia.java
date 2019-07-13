@@ -1,6 +1,9 @@
-package com.example.tecsup.cityalertarequipa.Actividades;
+package com.example.tecsup.cityalertarequipa.Actividades_Supervisor;
 
 import android.content.Intent;
+
+import com.example.tecsup.cityalertarequipa.Adaptadores.AdapterIncidencia;
+import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,62 +13,77 @@ import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Act_Incidencia extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
     Cls_Persona sup;
-    TextView nombreapp,subtitulo;
-    Button editar;
+    TextView nombreapp;
+    List<Cls_Incidencia> incidencias = new ArrayList<>();
+    ListView lv;
+    AdapterIncidencia adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_incidencia);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+
+        Intent i = getIntent();
+        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Intent i = getIntent();
-        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        subtitulo = findViewById(R.id.subtitulo);
+        Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
+                "luis@gmail.com","9475849554","psj s/n"
+                ,-16.429299,-71.519191);
+        Cls_Persona p2 = new Cls_Persona("Beto","Cruz","632438844",
+                "beto@gmail.com","9873432984","psj s/n",
+                -16.431299,-71.529191);
 
-        editar = findViewById(R.id.btn_editar);
-        Bundle b = i.getExtras();
-        int o = b.getInt("codigo");
-        if(!(o ==1)){
-            editar.setText("Editar");
-            subtitulo.setText("Editar Perfil");
-        }
-        else{
-            editar.setText("Agregar");
-            subtitulo.setText("Agregar Sereno");
-        }
-        editar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Cls_Incidencia incidencia1=new Cls_Incidencia("20:20","robo",p1,"Atendido");
+        Cls_Incidencia incidencia2=new Cls_Incidencia("21:30","disturbio",p1,"Atendido");
 
-            }
-        });
+        incidencias.add(incidencia1);
+        incidencias.add(incidencia2);
+
+        lv= findViewById(R.id.listv);
+
+        adaptador = new AdapterIncidencia(incidencias,getApplicationContext(),R.layout.item_incidencia);
+        lv.setAdapter(adaptador);
 
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -134,7 +152,7 @@ public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNa
             i.putExtra("supervisor",sup);
             startActivity(i);
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -1,11 +1,11 @@
-package com.example.tecsup.cityalertarequipa.Actividades;
+package com.example.tecsup.cityalertarequipa.Actividades_Supervisor;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -37,7 +36,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     HashMap<String, List<String>> expandableListDetail;
     Cls_Persona sup;
     TextView nombreapp;
-
+    int[] activo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,8 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         serenos.add(p1.getNombre()+" "+p1.getApellido());
         serenos.add(p2.getNombre()+" "+p2.getApellido());
 
+        activo = new int[]{0, 1};
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,7 +68,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListDetail = ExpandableListDataPump.getData(serenos);
+        expandableListDetail = ExpandableListDataPump.getData(serenos,activo);
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);

@@ -1,15 +1,8 @@
-package com.example.tecsup.cityalertarequipa.Actividades;
+package com.example.tecsup.cityalertarequipa.Actividades_Sereno;
 
 import android.content.Intent;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,17 +10,27 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia;
+import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Perfil;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
+import com.google.android.material.navigation.NavigationView;
 
-public class Act_TelefonoEmergencia extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    Cls_Persona sup;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+public class Act_TelefonoEmergencia_sereno extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    Cls_Persona sereno;
     TextView nombreapp;
     Button policia,bombero,ambulancia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_telefonoemergencia);Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_telefonoemergencia_sereno);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -36,7 +39,7 @@ public class Act_TelefonoEmergencia extends AppCompatActivity implements Navigat
         toggle.syncState();
 
         Intent i = getIntent();
-        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+        sereno=(Cls_Persona) i.getSerializableExtra("sereno");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -88,7 +91,7 @@ public class Act_TelefonoEmergencia extends AppCompatActivity implements Navigat
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
+        nombreapp.setText(sereno.getNombre()+" "+sereno.getApellido());
         return true;
     }
 
@@ -113,39 +116,31 @@ public class Act_TelefonoEmergencia extends AppCompatActivity implements Navigat
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.inicio) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
-            i.putExtra("supervisor",sup);
+/*
+        if (id == R.id.inicio2) {
+            Intent i = new Intent(this,Act_InicioSereno.class);
+            i.putExtra("sereno",sereno);
             startActivity(i);
-        } else if (id == R.id.serenos) {
-            Intent i = new Intent(this,Act_Serenos.class);
-            i.putExtra("supervisor",sup);
+        }else */if (id == R.id.incidencias2) {
+            Intent i = new Intent(this,Act_Incidencia_sereno.class);
+            i.putExtra("sereno",sereno);
             startActivity(i);
-        }else if (id == R.id.incidencias) {
-            Intent i = new Intent(this,Act_Incidencia.class);
-            i.putExtra("supervisor",sup);
+        }else if (id == R.id.telefonos2) {
+            Intent i = new Intent(this,Act_TelefonoEmergencia_sereno.class);
+            i.putExtra("sereno",sereno);
             startActivity(i);
-        }else if (id == R.id.ubicacion) {
-            Intent i = new Intent(this,Act_Ubicacion.class);
-            i.putExtra("supervisor",sup);
+        }else if (id == R.id.editar2) {
+            Intent i = new Intent(this,Act_Perfil_sereno.class);
+            i.putExtra("sereno",sereno);
             startActivity(i);
-        }else if (id == R.id.telefonos) {
-            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
-            i.putExtra("supervisor",sup);
-            startActivity(i);
-        }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Perfil.class);
-            i.putExtra("supervisor",sup);
-            startActivity(i);
-        }else if (id == R.id.logout) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+        }else if (id == R.id.logout2) {
+            Intent i = new Intent(this,Act_InicioSereno.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
-            i.putExtra("supervisor",sup);
+            i.putExtra("sereno",sereno);
             startActivity(i);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

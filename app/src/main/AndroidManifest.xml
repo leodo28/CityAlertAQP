@@ -19,34 +19,54 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".Actividades.Act_InicioSupervisor"
+            android:name=".Actividades_Supervisor.Act_InicioSupervisor"
             android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Actividades_Sereno.Act_InicioSereno"
+            android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
         <activity
-            android:name=".Actividades.Act_Serenos"
+            android:name=".Actividades_Supervisor.Act_Serenos"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades.Act_Incidencia"
+            android:name=".Actividades_Supervisor.Act_Incidencia"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades.Act_Ubicacion"
+            android:name=".Actividades_Supervisor.Act_Ubicacion"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades.Act_TelefonoEmergencia"
+            android:name=".Actividades_Supervisor.Act_TelefonoEmergencia"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades.Act_Perfil"
+            android:name=".Actividades_Supervisor.Act_Perfil"
             android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades_Sereno.Act_TelefonoEmergencia_sereno"
+            android:label="@string/title_activity_sereno"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades_Sereno.Act_Incidencia_sereno"
+            android:label="@string/title_activity_sereno"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades_Sereno.Act_Perfil_sereno"
+            android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

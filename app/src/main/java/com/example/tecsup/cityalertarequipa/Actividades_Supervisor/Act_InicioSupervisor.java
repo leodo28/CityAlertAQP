@@ -1,4 +1,4 @@
-package com.example.tecsup.cityalertarequipa.Actividades;
+package com.example.tecsup.cityalertarequipa.Actividades_Supervisor;
 
 import android.content.Intent;
 import android.os.Bundle;
