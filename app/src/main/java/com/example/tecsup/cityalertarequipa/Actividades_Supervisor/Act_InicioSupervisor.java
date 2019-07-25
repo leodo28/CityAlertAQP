@@ -58,8 +58,7 @@ public class Act_InicioSupervisor extends AppCompatActivity
         direccion = findViewById(R.id.direccion);
 
 
-        nombre.setText(sup.getNombre()+"");
-        apellido.setText(sup.getApellido()+"");
+        nombre.setText(sup.getNombre()+" "+sup.getApellido());
         DNI.setText(sup.getDni()+"");
         correo.setText(sup.getCorreo()+"");
         telefono.setText(sup.getTelefono()+"");

@@ -11,138 +11,141 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:layout_margin="20dp"
+        android:layout_height="350dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/view2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:shape="ring"
+            android:layout_gravity="center"
+            app:cardCornerRadius="90dp">
+            <ImageView
+                android:id="@+id/profile_img_post"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sereno6">
+            </ImageView>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Nombre"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nombre"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/nombre"
-            android:hint="Nombre"
-            android:textAlignment="textStart"
-            android:textSize="15sp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Apellido"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Apellido"
-            android:textAlignment="textStart"
-            android:id="@+id/apellido"
-            android:textSize="15sp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="DNI"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="DNI"
-            android:textAlignment="textStart"
-            android:id="@+id/dni"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:inputType="number"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Correo"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Correo"
-            android:textAlignment="textStart"
-            android:id="@+id/correo"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:inputType="textEmailAddress"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Telefono"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Telefono"
-            android:textAlignment="textStart"
-            android:id="@+id/telefono"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:inputType="number"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Direccion"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Direccion"
-            android:textAlignment="textStart"
-            android:id="@+id/direccion"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
     </LinearLayout>
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"/>
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/id"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:hint="DNI"
+                    android:textAlignment="textStart"
+                    android:id="@+id/dni"
+                    android:textSize="15sp"
+                    android:inputType="number"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/email"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:hint="Correo"
+                    android:textAlignment="textStart"
+                    android:id="@+id/correo"
+                    android:textSize="15sp"
+                    android:inputType="textEmailAddress"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/phone"/>
+               <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:hint="Telefono"
+                    android:textAlignment="textStart"
+                    android:id="@+id/telefono"
+                    android:textSize="15sp"
+                    android:inputType="number"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/address"/>
+               <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:hint="Direccion"
+                    android:textAlignment="textStart"
+                    android:id="@+id/direccion"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+    </LinearLayout>
 
     </LinearLayout>
 

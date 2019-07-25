@@ -1,5 +1,6 @@
 package com.example.tecsup.cityalertarequipa.Actividades_Sereno;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Act_Incidencia_sereno extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -153,5 +155,10 @@ public class Act_Incidencia_sereno extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
