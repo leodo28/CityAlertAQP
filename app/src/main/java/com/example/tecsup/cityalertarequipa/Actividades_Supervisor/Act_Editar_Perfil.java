@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Act_Editar_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
     TextView nombreapp,subtitulo;
     Button editar;
@@ -26,7 +26,7 @@ public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_editar_perfil_supervisor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
@@ -105,7 +105,11 @@ public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNa
         int id = item.getItemId();
 
         if (id == R.id.inicio) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        } else if (id == R.id.perfil) {
+            Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
@@ -125,11 +129,11 @@ public class Act_Perfil extends AppCompatActivity implements NavigationView.OnNa
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             startActivity(i);

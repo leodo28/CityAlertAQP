@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Perfil;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 import com.google.android.material.navigation.NavigationView;

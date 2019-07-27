@@ -54,6 +54,8 @@ public class AdapterIncidencia extends BaseAdapter {
                 +incidencias.get(position).getSereno().getApellido());
         TextView estado = v.findViewById(R.id.estado);
         estado.setText(incidencias.get(position).getEstado());
+        TextView fecha = v.findViewById(R.id.fecha);
+        fecha.setText(incidencias.get(position).getFecha());
         return v;
     }
 }

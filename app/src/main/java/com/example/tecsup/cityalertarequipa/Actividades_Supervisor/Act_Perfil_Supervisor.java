@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_InicioSupervisor extends AppCompatActivity
+public class Act_Perfil_Supervisor extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView nombre,apellido,DNI,correo,telefono,direccion,nombreapp;
@@ -26,7 +26,7 @@ public class Act_InicioSupervisor extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciosupervisor);
+        setContentView(R.layout.activity_perfil_supervisor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,8 +48,9 @@ public class Act_InicioSupervisor extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        sup = new Cls_Persona("Pepito","Dospalotes","23684505",
-                "p.dospalotes@gmail.com","948758935","psj s/n");
+        Intent i = getIntent();
+        sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+
         nombre = findViewById(R.id.nombre);
         apellido = findViewById(R.id.apellido);
         DNI = findViewById(R.id.dni);
@@ -108,7 +109,11 @@ public class Act_InicioSupervisor extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.inicio) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        } else if (id == R.id.perfil) {
+            Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
@@ -128,11 +133,11 @@ public class Act_InicioSupervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             startActivity(i);

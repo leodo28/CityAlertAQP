@@ -9,12 +9,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_InicioSupervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Perfil;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Serenos;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_TelefonoEmergencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Ubicacion;
 import com.example.tecsup.cityalertarequipa.Adaptadores.AdapterIncidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
@@ -76,8 +70,8 @@ public class Act_Incidencia_sereno extends AppCompatActivity
                 "beto@gmail.com","9873432984","psj s/n",
                 -16.431299,-71.529191);*/
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia("20:20","robo",sereno,"Atendido");
-        Cls_Incidencia incidencia2=new Cls_Incidencia("21:30","disturbio",sereno,"Atendido");
+        Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",sereno,"Atendido");
+        Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",sereno,"Atendido");
 
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);

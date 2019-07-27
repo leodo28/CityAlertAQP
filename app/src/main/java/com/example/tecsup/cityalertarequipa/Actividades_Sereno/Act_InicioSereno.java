@@ -7,11 +7,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Perfil;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Serenos;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_TelefonoEmergencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Ubicacion;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +27,7 @@ public class Act_InicioSereno extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciosereno);
+        setContentView(R.layout.activity_perfil_sereno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

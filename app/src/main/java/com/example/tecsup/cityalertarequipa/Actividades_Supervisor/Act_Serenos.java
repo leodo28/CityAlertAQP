@@ -86,7 +86,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Act_Perfil.class);
+                Intent i = new Intent(getApplicationContext(), Act_Editar_Perfil.class);
                 i.putExtra("supervisor",sup);
                 i.putExtra("codigo",1);
                 startActivity(i);
@@ -133,7 +133,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
 
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                         .get(childPosition).equals("Editar")){
-                    Intent i = new Intent(getApplicationContext(),Act_Perfil.class);
+                    Intent i = new Intent(getApplicationContext(),Act_Editar_Perfil.class);
                     i.putExtra("supervisor",sup);
                     startActivity(i);
                 }
@@ -188,7 +188,11 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.inicio) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        } else if (id == R.id.perfil) {
+            Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
@@ -208,11 +212,11 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             startActivity(i);

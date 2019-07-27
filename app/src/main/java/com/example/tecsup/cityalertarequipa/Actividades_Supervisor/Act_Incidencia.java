@@ -68,8 +68,8 @@ public class Act_Incidencia extends AppCompatActivity
                 "beto@gmail.com","9873432984","psj s/n",
                 -16.431299,-71.529191);
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia("20:20","robo",p1,"Atendido");
-        Cls_Incidencia incidencia2=new Cls_Incidencia("21:30","disturbio",p1,"Atendido");
+        Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",p1,"Atendido");
+        Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",p1,"Atendido");
 
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);
@@ -123,7 +123,11 @@ public class Act_Incidencia extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.inicio) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
+            i.putExtra("supervisor",sup);
+            startActivity(i);
+        } else if (id == R.id.perfil) {
+            Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
@@ -143,11 +147,11 @@ public class Act_Incidencia extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {
-            Intent i = new Intent(this,Act_InicioSupervisor.class);
+            Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             startActivity(i);

@@ -4,44 +4,119 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-        <TextView
+        android:layout_height="184dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/hora"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
+            android:layout_height="55dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/sereno"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/sereno"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/atencion"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/estado"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                />
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/tipo"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:background="#fff"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="10dp"
+                android:outlineSpotShadowColor="#ffffff"
+                android:background="@drawable/hora"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/hora"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:outlineSpotShadowColor="#ffffff"
+                android:background="@drawable/fecha"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/fecha"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/sereno"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/estado"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#fff">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/incidencia"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/tipo"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

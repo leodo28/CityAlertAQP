@@ -2,15 +2,17 @@ package com.example.tecsup.cityalertarequipa.Clases;
 
 public class Cls_Incidencia {
     String hora;
+    String fecha;
     String tipo;
     Cls_Persona sereno;
     String estado;
 
-    public Cls_Incidencia(String hora, String tipo, Cls_Persona sereno, String estado) {
+    public Cls_Incidencia(String fecha,String hora, String tipo, Cls_Persona sereno, String estado) {
         this.hora = hora;
         this.tipo = tipo;
         this.sereno = sereno;
         this.estado = estado;
+        this.fecha = fecha;
     }
 
     public String getHora() {
@@ -43,5 +45,13 @@ public class Cls_Incidencia {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

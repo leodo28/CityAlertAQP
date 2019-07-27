@@ -9,11 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_InicioSupervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Serenos;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_TelefonoEmergencia;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Ubicacion;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +27,7 @@ public class Act_Perfil_sereno extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_sereno);
+        setContentView(R.layout.activity_editar_perfil_sereno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);

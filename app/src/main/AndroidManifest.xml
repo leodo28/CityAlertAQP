@@ -20,18 +20,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".Actividades_Supervisor.Act_InicioSupervisor"
+            android:name=".Actividades_Supervisor.Act_Perfil_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
             android:name=".Actividades_Sereno.Act_InicioSereno"
+            android:label="@string/title_activity_sereno"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Actividades_Supervisor.Act_Inicio_Supervisor"
             android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -57,7 +57,7 @@
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades_Supervisor.Act_Perfil"
+            android:name=".Actividades_Supervisor.Act_Editar_Perfil"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -83,6 +83,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
 
     </application>
 
