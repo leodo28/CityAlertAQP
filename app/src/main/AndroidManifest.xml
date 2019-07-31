@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".Actividades_Supervisor.Act_Inicio_Supervisor"
-            android:label="@string/title_activity_sereno"
+            android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
