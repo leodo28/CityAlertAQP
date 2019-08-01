@@ -25,6 +25,7 @@ import com.example.tecsup.cityalertarequipa.Clases.ExpandableListDataPump;
 import com.example.tecsup.cityalertarequipa.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,11 +33,10 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
-    List<String> serenos = new ArrayList<String>();
+    List<Cls_Persona> serenos = new ArrayList<Cls_Persona>();
     HashMap<String, List<String>> expandableListDetail;
     Cls_Persona sup;
     TextView nombreapp;
-    int[] activo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +48,16 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
-        Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
+        Cls_Persona p1 = new Cls_Persona("Luis Alberto","Garcia Lopez","48743655",
                 "luis@gmail.com","9475849554","psj s/n"
                 ,-16.429299,-71.519191);
-        Cls_Persona p2 = new Cls_Persona("Beto","Cruz","632438844",
+        Cls_Persona p2 = new Cls_Persona("Alberto Pepe","Cruz Rivera","632438844",
                 "beto@gmail.com","9873432984","psj s/n",
                 -16.431299,-71.529191);
-        serenos.add(p1.getNombre()+" "+p1.getApellido());
-        serenos.add(p2.getNombre()+" "+p2.getApellido());
-
-        activo = new int[]{0, 1};
+        p1.setActivo(1);
+        p2.setActivo(0);
+        serenos.add(p1);
+        serenos.add(p2);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,9 +68,10 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListDetail = ExpandableListDataPump.getData(serenos,activo);
+        expandableListDetail = ExpandableListDataPump.getData(serenos);
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        Collections.reverse(expandableListTitle);
+        expandableListAdapter = new CustomExpandableListAdapter(this, serenos, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
