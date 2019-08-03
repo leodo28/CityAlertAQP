@@ -28,19 +28,14 @@
             android:id="@+id/telefonos"
             android:icon="@drawable/fono"
             android:title="Telefonos de emergencia" />
+        <item
+            android:id="@+id/editar"
+            android:icon="@drawable/editar"
+            android:title="Editar Perfil" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Cerrar Sesion" />
     </group>
 
-    <item android:title="Configuraciones">
-        <menu>
-            <item
-                android:id="@+id/editar"
-                android:icon="@drawable/editar"
-                android:title="Editar Perfil" />
-            <item
-                android:id="@+id/logout"
-                android:icon="@drawable/logout"
-                android:title="Cerrar Sesion" />
-        </menu>
-    </item>
-
-</menu>
+ </menu>

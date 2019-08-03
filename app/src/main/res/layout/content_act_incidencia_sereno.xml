@@ -22,60 +22,19 @@
             android:layout_margin="8dp"
 
             />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Hora"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Tipo"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Sereno"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Estado"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        </LinearLayout>
-
-        <ListView
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listv"></ListView>
+            android:layout_margin="8dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/listv"></ListView>
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -13,45 +13,80 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Telefonos de Emergencia"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_margin="8dp"
-
-            />
-
-        <Button
+        <LinearLayout
             android:id="@+id/btn_policia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="50dp"
             android:layout_weight="1"
-            android:layout_margin="30dp"
-            android:textSize="25sp"
-            android:text="POLICIA" />
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/policia"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:text="POLICIA"/>
 
-        <Button
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/btn_bomberos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="50dp"
             android:layout_weight="1"
-            android:layout_margin="30dp"
-            android:textSize="25sp"
-            android:text="BOMBEROS" />
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/bombero"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:text="BOMBEROS"/>
+        </LinearLayout>
 
-        <Button
+        <LinearLayout
             android:id="@+id/btn_ambulancia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="50dp"
             android:layout_weight="1"
-            android:layout_margin="30dp"
-            android:textSize="25sp"
-            android:text="AMBULANCIA" />
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/ambulancia"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:text="AMBULANCIA"/>
 
-
+        </LinearLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

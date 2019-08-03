@@ -7,7 +7,7 @@
         <item
             android:id="@+id/inicio2"
             android:icon="@drawable/home"
-            android:title="Inicio" />
+            android:title="Mi Perfil" />
         <item
             android:id="@+id/incidencias2"
             android:icon="@drawable/escudo"
@@ -16,19 +16,14 @@
             android:id="@+id/telefonos2"
             android:icon="@drawable/fono"
             android:title="Telefonos de emergencia" />
+        <item
+            android:id="@+id/editar2"
+            android:icon="@drawable/perfil"
+            android:title="Editar Perfil" />
+        <item
+            android:id="@+id/logout2"
+            android:icon="@drawable/logout"
+            android:title="Cerrar Sesion" />
     </group>
-
-    <item android:title="Configuraciones">
-        <menu>
-            <item
-                android:id="@+id/editar2"
-                android:icon="@drawable/perfil"
-                android:title="Editar Perfil" />
-            <item
-                android:id="@+id/logout2"
-                android:icon="@drawable/logout"
-                android:title="Cerrar Sesion" />
-        </menu>
-    </item>
 
 </menu>

@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class Act_Serenos extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -41,7 +41,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_serenos);
+        setContentView(R.layout.activity_serenosacargo_supervisor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -87,7 +87,7 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Act_Editar_Perfil.class);
+                Intent i = new Intent(getApplicationContext(), Act_Editar_Perfil_Supervisor.class);
                 i.putExtra("supervisor",sup);
                 i.putExtra("codigo",1);
                 startActivity(i);
@@ -127,14 +127,14 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
 
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                         .get(childPosition).equals("Incidencias")){
-                    Intent i = new Intent(getApplicationContext(),Act_Incidencia.class);
+                    Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                     i.putExtra("supervisor",sup);
                     startActivity(i);
                 }
 
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                         .get(childPosition).equals("Editar")){
-                    Intent i = new Intent(getApplicationContext(),Act_Editar_Perfil.class);
+                    Intent i = new Intent(getApplicationContext(),Act_Editar_Perfil_Supervisor.class);
                     i.putExtra("supervisor",sup);
                     startActivity(i);
                 }
@@ -197,11 +197,11 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
-            Intent i = new Intent(this,Act_Serenos.class);
+            Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.incidencias) {
-            Intent i = new Intent(this,Act_Incidencia.class);
+            Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
@@ -209,11 +209,11 @@ public class Act_Serenos extends AppCompatActivity implements NavigationView.OnN
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {
-            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Editar_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {

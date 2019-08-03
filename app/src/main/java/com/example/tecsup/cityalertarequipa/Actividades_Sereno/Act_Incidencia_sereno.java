@@ -125,7 +125,7 @@ public class Act_Incidencia_sereno extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.inicio2) {
-            Intent i = new Intent(this,Act_InicioSereno.class);
+            Intent i = new Intent(this,Act_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.incidencias2) {
@@ -137,11 +137,11 @@ public class Act_Incidencia_sereno extends AppCompatActivity
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.editar2) {
-            Intent i = new Intent(this,Act_Perfil_sereno.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.logout2) {
-            Intent i = new Intent(this,Act_InicioSereno.class);
+            Intent i = new Intent(this,Act_Perfil_Sereno.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("sereno",sereno);
             startActivity(i);

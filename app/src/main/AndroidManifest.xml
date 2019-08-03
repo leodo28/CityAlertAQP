@@ -26,26 +26,35 @@
 
         </activity>
         <activity
-            android:name=".Actividades_Sereno.Act_InicioSereno"
+            android:name=".Actividades_Sereno.Act_Perfil_Sereno"
             android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
+
         <activity
             android:name=".Actividades_Supervisor.Act_Inicio_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Actividades_Sereno.Act_Inicio_Sereno"
+            android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".Actividades_Supervisor.Act_Serenos"
+            android:name=".Actividades_Supervisor.Act_SerenosaCargo_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades_Supervisor.Act_Incidencia"
+            android:name=".Actividades_Supervisor.Act_Incidencia_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -53,11 +62,11 @@
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades_Supervisor.Act_TelefonoEmergencia"
+            android:name=".Actividades_Supervisor.Act_TelefonoEmergencia_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades_Supervisor.Act_Editar_Perfil"
+            android:name=".Actividades_Supervisor.Act_Editar_Perfil_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -69,7 +78,7 @@
             android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Actividades_Sereno.Act_Perfil_sereno"
+            android:name=".Actividades_Sereno.Act_Editar_Perfil_Sereno"
             android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--

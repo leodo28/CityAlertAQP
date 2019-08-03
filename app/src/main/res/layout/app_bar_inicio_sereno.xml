@@ -21,7 +21,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_act_iniciosereno" />
+    <include layout="@layout/content_act_inicio_sereno" />
 
 
 

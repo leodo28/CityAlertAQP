@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Actividades_Supervisor.Act_Editar_Perfil"
-    tools:showIn="@layout/app_bar_editar_perfil">
+    tools:context=".Actividades_Supervisor.Act_Editar_Perfil_Supervisor"
+    tools:showIn="@layout/app_bar_editar_perfil_supervisor">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

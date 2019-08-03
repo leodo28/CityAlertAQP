@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
-public class Act_Editar_Perfil extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Act_Editar_Perfil_Supervisor extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Cls_Persona sup;
     TextView nombreapp,subtitulo;
     Button editar;
@@ -113,11 +113,11 @@ public class Act_Editar_Perfil extends AppCompatActivity implements NavigationVi
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
-            Intent i = new Intent(this,Act_Serenos.class);
+            Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.incidencias) {
-            Intent i = new Intent(this,Act_Incidencia.class);
+            Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
@@ -125,11 +125,11 @@ public class Act_Editar_Perfil extends AppCompatActivity implements NavigationVi
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {
-            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Editar_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {

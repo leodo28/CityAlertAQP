@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,54 +17,58 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class Act_Perfil_sereno extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Act_Perfil_Sereno extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView nombre,DNI,correo,telefono,direccion,nombreapp;
     Cls_Persona sereno;
-    TextView nombreapp,subtitulo;
-    Button editar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_perfil_sereno);
+        setContentView(R.layout.activity_perfil_sereno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Intent i = getIntent();
-        sereno=(Cls_Persona) i.getSerializableExtra("sereno");
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        subtitulo = findViewById(R.id.subtitulo);
+        sereno = new Cls_Persona("Pepito","Dospalotes","23684505",
+                "p.dospalotes@gmail.com","948758935","psj s/n");
+        nombre = findViewById(R.id.nombre);
+        DNI = findViewById(R.id.dni);
+        correo = findViewById(R.id.correo);
+        telefono = findViewById(R.id.telefono);
+        direccion = findViewById(R.id.direccion);
 
-        editar = findViewById(R.id.btn_editar);
-        Bundle b = i.getExtras();
-        int o = b.getInt("codigo");
-        if(!(o ==1)){
-            editar.setText("Editar");
-            subtitulo.setText("Editar Perfil");
-        }
-        else{
-            editar.setText("Agregar");
-            subtitulo.setText("Agregar Sereno");
-        }
-        editar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+        nombre.setText(sereno.getNombre()+" "+sereno.getApellido());
+        DNI.setText(sereno.getDni()+"");
+        correo.setText(sereno.getCorreo()+"");
+        telefono.setText(sereno.getTelefono()+"");
+        direccion.setText(sereno.getDireccion()+"");
 
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -106,7 +108,7 @@ public class Act_Perfil_sereno extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.inicio2) {
-            Intent i = new Intent(this,Act_InicioSereno.class);
+            Intent i = new Intent(this,Act_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.incidencias2) {
@@ -118,16 +120,16 @@ public class Act_Perfil_sereno extends AppCompatActivity implements NavigationVi
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.editar2) {
-            Intent i = new Intent(this,Act_Perfil_sereno.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);
         }else if (id == R.id.logout2) {
-            Intent i = new Intent(this,Act_InicioSereno.class);
+            Intent i = new Intent(this,Act_Perfil_Sereno.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("sereno",sereno);
             startActivity(i);
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

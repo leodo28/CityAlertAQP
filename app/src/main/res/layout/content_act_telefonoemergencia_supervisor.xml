@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Actividades_Supervisor.Act_TelefonoEmergencia"
-    tools:showIn="@layout/app_bar_telefonoemergencia">
+    tools:context=".Actividades_Supervisor.Act_TelefonoEmergencia_Supervisor"
+    tools:showIn="@layout/app_bar_telefonoemergencia_supervisor">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

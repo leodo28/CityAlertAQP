@@ -52,7 +52,6 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
         nombre = findViewById(R.id.nombre);
-        apellido = findViewById(R.id.apellido);
         DNI = findViewById(R.id.dni);
         correo = findViewById(R.id.correo);
         telefono = findViewById(R.id.telefono);
@@ -117,11 +116,11 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
-            Intent i = new Intent(this,Act_Serenos.class);
+            Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.incidencias) {
-            Intent i = new Intent(this,Act_Incidencia.class);
+            Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
@@ -129,11 +128,11 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {
-            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Editar_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {

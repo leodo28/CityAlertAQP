@@ -21,7 +21,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_act_telefonoemergencia" />
-
+    <include layout="@layout/content_act_ubicacion_supervisor" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

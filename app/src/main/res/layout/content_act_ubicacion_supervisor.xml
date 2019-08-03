@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Actividades_Supervisor.Act_Ubicacion"
-    tools:showIn="@layout/app_bar_ubicacion"
+    tools:showIn="@layout/app_bar_ubicacion_supervisor"
     >
     <fragment  xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"

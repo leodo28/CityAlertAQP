@@ -23,7 +23,7 @@ import com.example.tecsup.cityalertarequipa.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Act_Incidencia extends AppCompatActivity
+public class Act_Incidencia_Supervisor extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Cls_Persona sup;
@@ -35,7 +35,7 @@ public class Act_Incidencia extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_incidencia);
+        setContentView(R.layout.activity_incidencia_supervisor);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -131,11 +131,11 @@ public class Act_Incidencia extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         } else if (id == R.id.serenos) {
-            Intent i = new Intent(this,Act_Serenos.class);
+            Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.incidencias) {
-            Intent i = new Intent(this,Act_Incidencia.class);
+            Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
@@ -143,11 +143,11 @@ public class Act_Incidencia extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {
-            Intent i = new Intent(this,Act_TelefonoEmergencia.class);
+            Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.editar) {
-            Intent i = new Intent(this,Act_Editar_Perfil.class);
+            Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.logout) {
