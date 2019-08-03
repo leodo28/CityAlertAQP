@@ -115,12 +115,16 @@ public class Act_TelefonoEmergencia_sereno extends AppCompatActivity implements 
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-/*
+
         if (id == R.id.inicio2) {
+            Intent i = new Intent(this,Act_Inicio_Sereno.class);
+            i.putExtra("sereno",sereno);
+            startActivity(i);
+        }else if (id == R.id.perfil2) {
             Intent i = new Intent(this,Act_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);
-        }else */if (id == R.id.incidencias2) {
+        }else if (id == R.id.incidencias2) {
             Intent i = new Intent(this,Act_Incidencia_sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);

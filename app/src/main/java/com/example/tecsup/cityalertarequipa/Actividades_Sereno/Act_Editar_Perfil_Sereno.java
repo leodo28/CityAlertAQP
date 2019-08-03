@@ -106,6 +106,10 @@ public class Act_Editar_Perfil_Sereno extends AppCompatActivity implements Navig
         int id = item.getItemId();
 
         if (id == R.id.inicio2) {
+            Intent i = new Intent(this,Act_Inicio_Sereno.class);
+            i.putExtra("sereno",sereno);
+            startActivity(i);
+        }else if (id == R.id.perfil2) {
             Intent i = new Intent(this,Act_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);

@@ -49,8 +49,9 @@ public class Act_Perfil_Sereno extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        sereno = new Cls_Persona("Pepito","Dospalotes","23684505",
-                "p.dospalotes@gmail.com","948758935","psj s/n");
+        Intent i = getIntent();
+        sereno=(Cls_Persona) i.getSerializableExtra("sereno");
+
         nombre = findViewById(R.id.nombre);
         DNI = findViewById(R.id.dni);
         correo = findViewById(R.id.correo);
@@ -108,6 +109,10 @@ public class Act_Perfil_Sereno extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.inicio2) {
+            Intent i = new Intent(this,Act_Inicio_Sereno.class);
+            i.putExtra("sereno",sereno);
+            startActivity(i);
+        }else if (id == R.id.perfil2) {
             Intent i = new Intent(this,Act_Perfil_Sereno.class);
             i.putExtra("sereno",sereno);
             startActivity(i);

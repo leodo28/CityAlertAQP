@@ -7,6 +7,10 @@
         <item
             android:id="@+id/inicio2"
             android:icon="@drawable/home"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/perfil2"
+            android:icon="@drawable/perfil"
             android:title="Mi Perfil" />
         <item
             android:id="@+id/incidencias2"

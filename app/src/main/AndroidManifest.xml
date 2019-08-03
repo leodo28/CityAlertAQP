@@ -36,17 +36,18 @@
             android:name=".Actividades_Supervisor.Act_Inicio_Supervisor"
             android:label="@string/title_activity_iniciosupervisor2"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".Actividades_Sereno.Act_Inicio_Sereno"
             android:label="@string/title_activity_sereno"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
