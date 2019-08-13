@@ -58,9 +58,9 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
         direccion = findViewById(R.id.direccion);
 
 
-        nombre.setText(sup.getNombre()+" "+sup.getApellido());
+        nombre.setText(sup.getNombres()+" "+sup.getApellidopaterno());
         DNI.setText(sup.getDni()+"");
-        correo.setText(sup.getCorreo()+"");
+        correo.setText(sup.getEmail()+"");
         telefono.setText(sup.getTelefono()+"");
         direccion.setText(sup.getDireccion()+"");
 
@@ -81,7 +81,7 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
+        nombreapp.setText(sup.getNombres()+" "+sup.getApellidopaterno()+" "+sup.getApellidomaterno());
         return true;
     }
 
@@ -124,7 +124,7 @@ public class Act_Perfil_Supervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
-            Intent i = new Intent(this,Act_Ubicacion.class);
+            Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {

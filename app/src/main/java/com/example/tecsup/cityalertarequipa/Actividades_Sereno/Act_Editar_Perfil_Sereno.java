@@ -79,7 +79,7 @@ public class Act_Editar_Perfil_Sereno extends AppCompatActivity implements Navig
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sereno.getNombre()+" "+sereno.getApellido());
+        nombreapp.setText(sereno.getNombres()+" "+sereno.getApellidopaterno()+sereno.getApellidomaterno());
         return true;
     }
 

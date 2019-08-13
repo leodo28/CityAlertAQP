@@ -9,12 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Editar_Perfil_Supervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Incidencia_Supervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Perfil_Supervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_SerenosaCargo_Supervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_TelefonoEmergencia_Supervisor;
-import com.example.tecsup.cityalertarequipa.Actividades_Supervisor.Act_Ubicacion;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
@@ -63,8 +57,8 @@ public class Act_Inicio_Sereno extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        sereno = new Cls_Persona("Pepito","Dospalotes","23684505",
-                "p.dospalotes@gmail.com","948758935","psj s/n");
+        sereno = new Cls_Persona("23684505","Pepito","Dospalotes",""
+                ,"p.dospalotes@gmail.com","psj s/n","948758935");
 
         /*Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
                 "luis@gmail.com","9475849554","psj s/n"
@@ -124,7 +118,7 @@ public class Act_Inicio_Sereno extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sereno.getNombre()+" "+sereno.getApellido());
+        nombreapp.setText(sereno.getNombres()+" "+sereno.getApellidopaterno()+sereno.getApellidomaterno());
         return true;
     }
 

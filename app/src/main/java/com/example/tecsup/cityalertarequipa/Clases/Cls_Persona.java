@@ -3,12 +3,15 @@ package com.example.tecsup.cityalertarequipa.Clases;
 import java.io.Serializable;
 
 public class Cls_Persona implements Serializable {
-    String nombre;
-    String apellido;
+    int id;
     String dni;
-    String correo;
-    String telefono;
+    String nombres;
+    String apellidopaterno;
+    String apellidomaterno;
+    String email;
     String direccion;
+    String telefono;
+    boolean estado;
     int activo =0;
     double latitud;
     double longitud;
@@ -16,40 +19,26 @@ public class Cls_Persona implements Serializable {
     public Cls_Persona() {
     }
 
-    public Cls_Persona(String nombre, String apellido, String dni, String correo, String telefono, String direccion) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Cls_Persona(String dni, String nombres, String apellidopaterno, String apellidomaterno, String email, String direccion, String telefono) {
         this.dni = dni;
-        this.correo = correo;
-        this.telefono = telefono;
+        this.nombres = nombres;
+        this.apellidopaterno = apellidopaterno;
+        this.apellidomaterno = apellidomaterno;
+        this.email = email;
         this.direccion = direccion;
+        this.telefono = telefono;
     }
 
-    public Cls_Persona(String nombre, String apellido, String dni, String correo, String telefono, String direccion, double latitud, double longitud) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Cls_Persona(String dni, String nombres, String apellidopaterno, String apellidomaterno, String email, String direccion, String telefono, double latitud, double longitud) {
         this.dni = dni;
-        this.correo = correo;
-        this.telefono = telefono;
+        this.nombres = nombres;
+        this.apellidopaterno = apellidopaterno;
+        this.apellidomaterno = apellidomaterno;
+        this.email = email;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.latitud = latitud;
         this.longitud = longitud;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public String getDni() {
@@ -60,20 +49,36 @@ public class Cls_Persona implements Serializable {
         this.dni = dni;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getApellidopaterno() {
+        return apellidopaterno;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setApellidopaterno(String apellidopaterno) {
+        this.apellidopaterno = apellidopaterno;
+    }
+
+    public String getApellidomaterno() {
+        return apellidomaterno;
+    }
+
+    public void setApellidomaterno(String apellidomaterno) {
+        this.apellidomaterno = apellidomaterno;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDireccion() {
@@ -84,15 +89,47 @@ public class Cls_Persona implements Serializable {
         this.direccion = direccion;
     }
 
-    public double getLatitud() { return latitud; }
+    public String getTelefono() {
+        return telefono;
+    }
 
-    public void setLatitud(double latitud) { this.latitud = latitud; }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-    public double getLongitud() { return longitud; }
+    public int getActivo() {
+        return activo;
+    }
 
-    public void setLongitud(double longitud) { this.longitud = longitud; }
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
 
-    public int getActivo() {return activo;}
+    public double getLatitud() {
+        return latitud;
+    }
 
-    public void setActivo(int activo) {this.activo = activo;}
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
 }

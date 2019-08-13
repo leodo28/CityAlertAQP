@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +24,7 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
+import com.example.tecsup.cityalertarequipa.ServiciosPersona;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -29,8 +36,10 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
     TextView num_serenos,num_inci_atendidos,num_inci_pendientes,nombreapp;
     LinearLayout serenos,inci_atendidos,inci_pendientes;
     Cls_Persona sup;
-    List<String> serenos_list = new ArrayList<String>();
+    List<Cls_Persona> serenos_list = new ArrayList<>();
     List<Cls_Incidencia> incidencias = new ArrayList<>();
+    public static String url = "http://34.67.84.216:8090/";
+
 
 
     @Override
@@ -39,6 +48,45 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         setContentView(R.layout.activity_inicio_supervisor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ServiciosPersona personaservicios = retrofit.create(ServiciosPersona.class);
+        Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(6);
+        call1.enqueue(new Callback<Cls_Persona>() {
+            @Override
+            public void onResponse(Call<Cls_Persona> call, Response<Cls_Persona> response) {
+                Log.e("respuesta",response.code()+"");
+                switch (response.code()){
+                    case 200:
+                        sup = (Cls_Persona) response.body();
+                        Log.e("Supervisor",response.body().getId()+"");
+                        nombreapp=findViewById(R.id.Nombreapp);
+                        nombreapp.setText(sup.getNombres()+" "+sup.getApellidopaterno()+" "+sup.getApellidomaterno());
+                        break;
+                }
+            }
+            @Override
+            public void onFailure(Call<Cls_Persona> call, Throwable t) {
+                Log.d("error","no entro");
+            }
+        });
+        Call<List<Cls_Persona>> call2 = personaservicios.listarSerenos();
+        call2.enqueue(new Callback<List<Cls_Persona>>() {
+            @Override
+            public void onResponse(Call<List<Cls_Persona>> call, Response<List<Cls_Persona>> response) {
+                switch (response.code()){
+                    case 200:
+                        serenos_list = (List<Cls_Persona>)response.body();
+                        Log.e("Sereno",response.body().get(3).getNombres()+"");
+                        break;
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Cls_Persona>> call, Throwable t) {
+            }
+        });
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +106,11 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        sup = new Cls_Persona("Pepito","Dospalotes","23684505",
-                "p.dospalotes@gmail.com","948758935","psj s/n");
 
-        Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
+       /* sup = new Cls_Persona("Pepito","Dospalotes","23684505",
+                "p.dospalotes@gmail.com","948758935","psj s/n");*/
+
+       /* Cls_Persona p1 = new Cls_Persona("Luis","Garcia","48743655",
                 "luis@gmail.com","9475849554","psj s/n"
                 ,-16.429299,-71.519191);
         Cls_Persona p2 = new Cls_Persona("Beto","Cruz","632438844",
@@ -69,7 +118,9 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 -16.431299,-71.529191);
 
         serenos_list.add(p1.getNombre()+" "+p1.getApellido());
-        serenos_list.add(p2.getNombre()+" "+p2.getApellido());
+        serenos_list.add(p2.getNombre()+" "+p2.getApellido());*/
+
+        Cls_Persona p1 = new Cls_Persona();
 
         Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",p1,"Atendido");
         Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",p1,"Atendido");
@@ -131,8 +182,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
-        nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
+
         return true;
     }
 
@@ -175,7 +225,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
-            Intent i = new Intent(this,Act_Ubicacion.class);
+            Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {

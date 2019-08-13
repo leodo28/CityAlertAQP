@@ -16,11 +16,11 @@ public class ExpandableListDataPump {
             sereno.add("Incidencias");
             sereno.add("Editar");
             sereno.add("Eliminar");
-            expandableListDetail.put(serenos.get(i).getNombre()+" "+serenos.get(i).getApellido(), sereno);
+            expandableListDetail.put(serenos.get(i).getNombres()+" "+serenos.get(i).getApellidopaterno(), sereno);
             }
             else{
                 List<String> sereno = new ArrayList<String>();
-                expandableListDetail.put(serenos.get(i).getNombre()+" "+serenos.get(i).getApellido(), sereno);
+                expandableListDetail.put(serenos.get(i).getNombres()+" "+serenos.get(i).getApellidopaterno() , sereno);
             }
         }
         return expandableListDetail;

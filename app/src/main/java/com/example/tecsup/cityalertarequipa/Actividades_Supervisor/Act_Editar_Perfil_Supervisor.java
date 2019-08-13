@@ -78,7 +78,7 @@ public class Act_Editar_Perfil_Supervisor extends AppCompatActivity implements N
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
+        nombreapp.setText(sup.getNombres()+" "+sup.getApellidopaterno()+sup.getApellidomaterno());
         return true;
     }
 
@@ -121,7 +121,7 @@ public class Act_Editar_Perfil_Supervisor extends AppCompatActivity implements N
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
-            Intent i = new Intent(this,Act_Ubicacion.class);
+            Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {

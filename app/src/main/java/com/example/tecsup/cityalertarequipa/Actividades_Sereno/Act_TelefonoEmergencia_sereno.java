@@ -90,7 +90,7 @@ public class Act_TelefonoEmergencia_sereno extends AppCompatActivity implements 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sereno.getNombre()+" "+sereno.getApellido());
+        nombreapp.setText(sereno.getNombres()+" "+sereno.getApellidopaterno()+" "+sereno.getApellidomaterno());
         return true;
     }
 

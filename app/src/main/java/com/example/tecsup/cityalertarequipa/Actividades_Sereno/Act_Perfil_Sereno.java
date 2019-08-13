@@ -59,9 +59,9 @@ public class Act_Perfil_Sereno extends AppCompatActivity
         direccion = findViewById(R.id.direccion);
 
 
-        nombre.setText(sereno.getNombre()+" "+sereno.getApellido());
+        nombre.setText(sereno.getNombres()+" "+sereno.getApellidopaterno()+" "+sereno.getApellidomaterno());
         DNI.setText(sereno.getDni()+"");
-        correo.setText(sereno.getCorreo()+"");
+        correo.setText(sereno.getEmail()+"");
         telefono.setText(sereno.getTelefono()+"");
         direccion.setText(sereno.getDireccion()+"");
 
@@ -82,7 +82,7 @@ public class Act_Perfil_Sereno extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sereno.getNombre()+" "+sereno.getApellido());
+        nombreapp.setText(sereno.getNombres()+" "+sereno.getApellidopaterno()+" "+sereno.getApellidomaterno());
         return true;
     }
 

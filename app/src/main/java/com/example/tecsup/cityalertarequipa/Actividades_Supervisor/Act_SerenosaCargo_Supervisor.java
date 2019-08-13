@@ -48,11 +48,11 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
 
-        Cls_Persona p1 = new Cls_Persona("Luis Alberto","Garcia Lopez","48743655",
-                "luis@gmail.com","9475849554","psj s/n"
-                ,-16.429299,-71.519191);
-        Cls_Persona p2 = new Cls_Persona("Alberto Pepe","Cruz Rivera","632438844",
-                "beto@gmail.com","9873432984","psj s/n",
+        Cls_Persona p1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
+                "luis@gmail.com","psj s/n"
+                ,"9475849554",-16.429299,-71.519191);
+        Cls_Persona p2 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
+                "beto@gmail.com","psj s/n","9873432984",
                 -16.431299,-71.529191);
         p1.setActivo(1);
         p2.setActivo(0);
@@ -120,7 +120,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
 
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                             .get(childPosition).equals("Geolocalizacion")){
-                        Intent i = new Intent(getApplicationContext(),Act_Ubicacion.class);
+                        Intent i = new Intent(getApplicationContext(),Act_Ubicacion_Supervisor.class);
                         i.putExtra("supervisor",sup);
                         startActivity(i);
                 }
@@ -163,7 +163,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.iniciosupervisor2, menu);
         nombreapp=findViewById(R.id.Nombreapp);
-        nombreapp.setText(sup.getNombre()+" "+sup.getApellido());
+        nombreapp.setText(sup.getNombres()+" "+sup.getApellidopaterno()+" "+sup.getApellidomaterno());
         return true;
     }
 
@@ -205,7 +205,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
-            Intent i = new Intent(this,Act_Ubicacion.class);
+            Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             startActivity(i);
         }else if (id == R.id.telefonos) {
