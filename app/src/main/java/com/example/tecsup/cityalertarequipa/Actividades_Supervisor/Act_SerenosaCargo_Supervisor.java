@@ -24,6 +24,7 @@ import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.Clases.ExpandableListDataPump;
 import com.example.tecsup.cityalertarequipa.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
-    List<Cls_Persona> serenos = new ArrayList<Cls_Persona>();
+    List<Cls_Persona> serenos_list = new ArrayList<Cls_Persona>();
     HashMap<String, List<String>> expandableListDetail;
     Cls_Persona sup;
     TextView nombreapp;
@@ -47,8 +48,9 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
 
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+        serenos_list=(List<Cls_Persona>) i.getSerializableExtra("serenos");
 
-        Cls_Persona p1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
+        /*Cls_Persona p1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
                 "luis@gmail.com","psj s/n"
                 ,"9475849554",-16.429299,-71.519191);
         Cls_Persona p2 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
@@ -57,7 +59,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         p1.setActivo(1);
         p2.setActivo(0);
         serenos.add(p1);
-        serenos.add(p2);
+        serenos.add(p2);*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,10 +70,10 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListDetail = ExpandableListDataPump.getData(serenos);
+        expandableListDetail = ExpandableListDataPump.getData(serenos_list);
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         Collections.reverse(expandableListTitle);
-        expandableListAdapter = new CustomExpandableListAdapter(this, serenos, expandableListDetail);
+        expandableListAdapter = new CustomExpandableListAdapter(this, serenos_list, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
@@ -122,6 +124,8 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
                             .get(childPosition).equals("Geolocalizacion")){
                         Intent i = new Intent(getApplicationContext(),Act_Ubicacion_Supervisor.class);
                         i.putExtra("supervisor",sup);
+                        i.putExtra("serenos", (Serializable) serenos_list);
+                        i.putExtra("sereno_selec", (Serializable) expandableListTitle.get(groupPosition));
                         startActivity(i);
                 }
 
@@ -129,6 +133,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
                         .get(childPosition).equals("Incidencias")){
                     Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                     i.putExtra("supervisor",sup);
+                    i.putExtra("serenos", (Serializable) serenos_list);
                     startActivity(i);
                 }
 
@@ -136,6 +141,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
                         .get(childPosition).equals("Editar")){
                     Intent i = new Intent(getApplicationContext(),Act_Editar_Perfil_Supervisor.class);
                     i.putExtra("supervisor",sup);
+                    i.putExtra("serenos", (Serializable) serenos_list);
                     startActivity(i);
                 }
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
@@ -191,35 +197,43 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);

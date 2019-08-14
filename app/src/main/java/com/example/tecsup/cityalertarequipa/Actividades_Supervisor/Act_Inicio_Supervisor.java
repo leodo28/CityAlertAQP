@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import com.example.tecsup.cityalertarequipa.R;
 import com.example.tecsup.cityalertarequipa.ServiciosPersona;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +42,6 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
     List<Cls_Incidencia> incidencias = new ArrayList<>();
     public static String url = "http://34.67.84.216:8090/";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,15 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        num_serenos = findViewById(R.id.num_sereno);
+        num_inci_atendidos = findViewById(R.id.inc_atendidos);
+        num_inci_pendientes = findViewById(R.id.inc_pendientes);
+
+        serenos=findViewById(R.id.btn_sere_activos);
+        inci_atendidos=findViewById(R.id.btn_inc_atendidas);
+        inci_pendientes =findViewById(R.id.btn_inc_pendientes);
+
         ServiciosPersona personaservicios = retrofit.create(ServiciosPersona.class);
         Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(6);
         call1.enqueue(new Callback<Cls_Persona>() {
@@ -79,6 +88,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 switch (response.code()){
                     case 200:
                         serenos_list = (List<Cls_Persona>)response.body();
+                        num_serenos.setText(serenos_list.size()+"");
                         Log.e("Sereno",response.body().get(3).getNombres()+"");
                         break;
                 }
@@ -128,15 +138,6 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);
 
-        num_serenos = findViewById(R.id.num_sereno);
-        num_inci_atendidos = findViewById(R.id.inc_atendidos);
-        num_inci_pendientes = findViewById(R.id.inc_pendientes);
-
-        serenos=findViewById(R.id.btn_sere_activos);
-        inci_atendidos=findViewById(R.id.btn_inc_atendidas);
-        inci_pendientes =findViewById(R.id.btn_inc_pendientes);
-
-        num_serenos.setText(serenos_list.size()+"");
         num_inci_atendidos.setText(incidencias.size()+"");
         num_inci_pendientes.setText(incidencias.size()+"");
 
@@ -145,6 +146,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Act_SerenosaCargo_Supervisor.class);
                 i.putExtra("supervisor",sup);
+                i.putExtra("serenos", (Serializable) serenos_list);
                 startActivity(i);
             }
         });
@@ -154,6 +156,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                 i.putExtra("supervisor",sup);
+                i.putExtra("serenos", (Serializable) serenos_list);
                 startActivity(i);
             }
         });
@@ -163,6 +166,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                 i.putExtra("supervisor",sup);
+                i.putExtra("serenos", (Serializable) serenos_list);
                 startActivity(i);
             }
         });
@@ -211,35 +215,43 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

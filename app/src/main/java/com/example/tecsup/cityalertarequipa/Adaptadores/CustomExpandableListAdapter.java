@@ -26,7 +26,6 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                                        HashMap<String, List<String>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        Collections.reverse(expandableListTitle);
         this.serenos=serenos;
         this.expandableListDetail = expandableListDetail;
     }
@@ -84,13 +83,17 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int listPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String listTitle = (String) getGroup(listPosition);
-        String actividad;
-        if(serenos.get(listPosition).getActivo()==0){actividad="Desactivo";}
-        else{actividad="Activo";}
+        String actividad="Desactivo";
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group, null);
+
+        }
+        for(int i=0;i<serenos.size();i++){
+            if(listTitle.equals(serenos.get(i).getNombres()+" "+serenos.get(i).getApellidopaterno())){
+             if(serenos.get(i).isEstado()) {actividad="Activo";}
+             }
         }
         TextView listTitleTextView = (TextView) convertView
                 .findViewById(R.id.listTitle);

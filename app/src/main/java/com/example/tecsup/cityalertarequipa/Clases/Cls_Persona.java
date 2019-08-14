@@ -12,7 +12,6 @@ public class Cls_Persona implements Serializable {
     String direccion;
     String telefono;
     boolean estado;
-    int activo =0;
     double latitud;
     double longitud;
 
@@ -95,14 +94,6 @@ public class Cls_Persona implements Serializable {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public int getActivo() {
-        return activo;
-    }
-
-    public void setActivo(int activo) {
-        this.activo = activo;
     }
 
     public double getLatitud() {

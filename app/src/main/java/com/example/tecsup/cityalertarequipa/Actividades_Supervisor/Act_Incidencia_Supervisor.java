@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
     TextView nombreapp;
     List<Cls_Incidencia> incidencias = new ArrayList<>();
     ListView lv;
+    List<Cls_Persona> serenos_list = new ArrayList<>();
     AdapterIncidencia adaptador;
 
     @Override
@@ -42,6 +44,7 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
 
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+        serenos_list=(List<Cls_Persona>)i.getSerializableExtra("serenos");
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -125,35 +128,43 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

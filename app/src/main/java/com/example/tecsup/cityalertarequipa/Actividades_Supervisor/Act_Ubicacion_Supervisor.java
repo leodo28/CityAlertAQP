@@ -6,6 +6,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -25,22 +26,28 @@ import android.widget.Toast;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Act_Ubicacion_Supervisor extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     Cls_Persona sup;
+    String sereno_sele=new String();
     TextView nombreapp;
     private GoogleMap mMap;
-
+    List<Cls_Persona> serenos_list = new ArrayList<Cls_Persona>();
+/*
     Cls_Persona sereno1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
             "luis@gmail.com","psj s/n"
-            ,"9475849554",-16.429299,-71.519191);
+            ,"9475849554",-16.429329,-71.519363);
     Cls_Persona sereno2 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
             "beto@gmail.com","psj s/n","9873432984",
-            -16.431299,-71.529191);
+            -16.429749,-71.519783);
 
     Cls_Persona sereno3 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
             "beto@gmail.com","psj s/n","9873432984",
-            -16.441299,-71.539191);
+            -16.428889,-71.518843);*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +61,19 @@ public class Act_Ubicacion_Supervisor extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
+        sup.setLatitud(-16.429749);
+        sup.setLongitud(-71.519783);
+        serenos_list=(List<Cls_Persona>)i.getSerializableExtra("serenos");
+        serenos_list.get(0).setLatitud(-16.429329);
+        serenos_list.get(0).setLongitud(-71.519363);
+        serenos_list.get(1).setLatitud(-16.429749);
+        serenos_list.get(1).setLongitud(-71.519783);
+        serenos_list.get(2).setLatitud(-16.428889);
+        serenos_list.get(2).setLongitud(-71.518843);
+        sereno_sele = (String) i.getSerializableExtra("sereno_selec");
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -71,17 +87,20 @@ public class Act_Ubicacion_Supervisor extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng ser1 = new LatLng(sereno1.getLatitud(), sereno1.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser1).title(sereno1.getNombres()));
-        LatLng ser2 = new LatLng(sereno2.getLatitud(), sereno2.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser2).title(sereno2.getNombres()));
-        LatLng ser3 = new LatLng(sereno3.getLatitud(), sereno3.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(ser3).title(sereno3.getNombres()));
-
+        for(int i =0;i<serenos_list.size();i++){
+            if(serenos_list.get(i).getLongitud()!=0){
+                if(sereno_sele!=null && sereno_sele.equals(serenos_list.get(i).getNombres()+" "+serenos_list.get(i).getApellidopaterno())){
+                    LatLng ser = new LatLng(serenos_list.get(i).getLatitud(), serenos_list.get(i).getLongitud());
+                    mMap.addMarker(new MarkerOptions().position(ser).title(serenos_list.get(i).getNombres()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                }else{
+                LatLng ser = new LatLng(serenos_list.get(i).getLatitud(), serenos_list.get(i).getLongitud());
+                mMap.addMarker(new MarkerOptions().position(ser).title(serenos_list.get(i).getNombres()));}
+            }
+        }
+        LatLng superv = new LatLng(sup.getLatitud(), sup.getLongitud());
         CameraPosition cameraPosition = CameraPosition.builder()
-                .target(ser1)
-                .zoom(13)
+                .target(superv)
+                .zoom(15)
                 .build();
 
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -131,35 +150,43 @@ public class Act_Ubicacion_Supervisor extends AppCompatActivity
         if (id == R.id.inicio) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
+            i.putExtra("serenos", (Serializable) serenos_list);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);

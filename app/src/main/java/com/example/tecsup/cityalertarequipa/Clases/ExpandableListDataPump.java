@@ -10,7 +10,7 @@ public class ExpandableListDataPump {
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
 
         for(int i=0;i<serenos.size();i++) {
-            if(serenos.get(i).getActivo()==1){
+            if(serenos.get(i).isEstado()){
             List<String> sereno = new ArrayList<String>();
             sereno.add("Geolocalizacion");
             sereno.add("Incidencias");
