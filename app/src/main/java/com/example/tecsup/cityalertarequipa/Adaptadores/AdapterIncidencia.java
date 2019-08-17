@@ -46,16 +46,19 @@ public class AdapterIncidencia extends BaseAdapter {
         LayoutInflater lv = LayoutInflater.from(context);
         v= lv.inflate(layout,null);
         TextView hora = v.findViewById(R.id.hora);
-        hora.setText(incidencias.get(position).getHora());
+        hora.setText(incidencias.get(position).getFecha().getHours()+":"+incidencias.get(position).getFecha().getMinutes());
         TextView tipo = v.findViewById(R.id.tipo);
-        tipo.setText(incidencias.get(position).getTipo());
+        tipo.setText(incidencias.get(position).getTipo_incidencia().getDescripcion());
         TextView sereno = v.findViewById(R.id.sereno);
         sereno.setText(incidencias.get(position).getSereno().getNombres()+" "
                 +incidencias.get(position).getSereno().getApellidopaterno());
         TextView estado = v.findViewById(R.id.estado);
-        estado.setText(incidencias.get(position).getEstado());
+        if(incidencias.get(position).isEstado()){estado.setText("Atendido");}
+        else{estado.setText("No Atendido");}
         TextView fecha = v.findViewById(R.id.fecha);
-        fecha.setText(incidencias.get(position).getFecha());
+        fecha.setText(incidencias.get(position).getFecha().getDay()+"-"
+                +incidencias.get(position).getFecha().getMonth()+"-"
+                +incidencias.get(position).getFecha().getYear());
         return v;
     }
 }

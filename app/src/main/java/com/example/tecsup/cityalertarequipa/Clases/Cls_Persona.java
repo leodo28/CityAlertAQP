@@ -14,6 +14,7 @@ public class Cls_Persona implements Serializable {
     boolean estado;
     double latitud;
     double longitud;
+    Cls_Persona supervisor;
 
     public Cls_Persona() {
     }
@@ -122,5 +123,13 @@ public class Cls_Persona implements Serializable {
 
     public boolean isEstado() {
         return estado;
+    }
+
+    public Cls_Persona getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Cls_Persona supervisor) {
+        this.supervisor = supervisor;
     }
 }

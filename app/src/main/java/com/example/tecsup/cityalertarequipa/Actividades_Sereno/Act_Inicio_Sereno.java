@@ -11,10 +11,12 @@ import android.widget.Toast;
 
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
+import com.example.tecsup.cityalertarequipa.Clases.Cls_Tipo_Incidencia;
 import com.example.tecsup.cityalertarequipa.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -70,8 +72,11 @@ public class Act_Inicio_Sereno extends AppCompatActivity
         num_inci_atendidos = findViewById(R.id.inc_atendidos);
         num_inci_pendientes = findViewById(R.id.inc_pendientes);
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",sereno,"Atendido");
-        Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",sereno,"Atendido");
+        Cls_Tipo_Incidencia t1 = new Cls_Tipo_Incidencia("robo",true);
+
+        Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,sereno);
+        Cls_Incidencia incidencia2=new Cls_Incidencia(new Date(119, 8,14, 16, 50, 6),t1,sereno);
+
 
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);

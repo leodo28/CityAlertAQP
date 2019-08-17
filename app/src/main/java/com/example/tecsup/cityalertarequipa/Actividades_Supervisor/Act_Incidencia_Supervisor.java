@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.example.tecsup.cityalertarequipa.Adaptadores.AdapterIncidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
+import com.example.tecsup.cityalertarequipa.Clases.Cls_Tipo_Incidencia;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,6 +23,7 @@ import com.example.tecsup.cityalertarequipa.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Act_Incidencia_Supervisor extends AppCompatActivity
@@ -70,9 +72,12 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
         Cls_Persona p2 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
                 "beto@gmail.com","psj s/n","9873432984",
                 -16.431299,-71.529191);
+        Cls_Tipo_Incidencia t1 = new Cls_Tipo_Incidencia("robo",true);
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",p1,"Atendido");
-        Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",p1,"Atendido");
+        Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,p1);
+        Cls_Incidencia incidencia2=new Cls_Incidencia(new Date(119, 8,14, 16, 50, 6),t1,p2);
+        incidencia1.setEstado(true);
+        incidencia2.setEstado(true);
 
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);

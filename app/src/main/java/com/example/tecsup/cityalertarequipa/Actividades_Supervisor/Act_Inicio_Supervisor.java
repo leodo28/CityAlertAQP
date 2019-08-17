@@ -24,12 +24,15 @@ import android.widget.Toast;
 
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Incidencia;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
+import com.example.tecsup.cityalertarequipa.Clases.Cls_Tipo_Incidencia;
 import com.example.tecsup.cityalertarequipa.R;
+import com.example.tecsup.cityalertarequipa.ServiciosIncidencia;
 import com.example.tecsup.cityalertarequipa.ServiciosPersona;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Act_Inicio_Supervisor extends AppCompatActivity
@@ -39,15 +42,18 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
     LinearLayout serenos,inci_atendidos,inci_pendientes;
     Cls_Persona sup;
     List<Cls_Persona> serenos_list = new ArrayList<>();
+    List<Cls_Persona> personas_list = new ArrayList<>();
     List<Cls_Incidencia> incidencias = new ArrayList<>();
     public static String url = "http://34.67.84.216:8090/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("Incidencias","inicioaaaa");
         setContentView(R.layout.activity_inicio_supervisor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.e("Incidencias","inicioppp");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -61,8 +67,9 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         inci_atendidos=findViewById(R.id.btn_inc_atendidas);
         inci_pendientes =findViewById(R.id.btn_inc_pendientes);
 
-        ServiciosPersona personaservicios = retrofit.create(ServiciosPersona.class);
-        Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(6);
+
+        final ServiciosPersona personaservicios = retrofit.create(ServiciosPersona.class);
+        Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(2);
         call1.enqueue(new Callback<Cls_Persona>() {
             @Override
             public void onResponse(Call<Cls_Persona> call, Response<Cls_Persona> response) {
@@ -70,9 +77,33 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 switch (response.code()){
                     case 200:
                         sup = (Cls_Persona) response.body();
-                        Log.e("Supervisor",response.body().getId()+"");
+
                         nombreapp=findViewById(R.id.Nombreapp);
                         nombreapp.setText(sup.getNombres()+" "+sup.getApellidopaterno()+" "+sup.getApellidomaterno());
+                        Call<List<Cls_Persona>> call2 = personaservicios.listarSerenos();
+                        call2.enqueue(new Callback<List<Cls_Persona>>() {
+                            @Override
+                            public void onResponse(Call<List<Cls_Persona>> call, Response<List<Cls_Persona>> response) {
+                                switch (response.code()){
+                                    case 200:
+                                        personas_list = (List<Cls_Persona>)response.body();
+                                        Log.e("Supervisor",sup.getId()+"");
+                                        Log.e("Sereno",personas_list.get(3).getSupervisor().getId()+"");
+                                        for(int i =0; i<personas_list.size()-1;i++){
+                                            if(personas_list.get(i).getSupervisor()!= null) {
+                                                if (personas_list.get(i).getSupervisor().getId() == sup.getId()) {
+                                                    serenos_list.add(personas_list.get(i));
+                                                }
+                                            }
+                                        }
+                                        num_serenos.setText(serenos_list.size()+"");
+                                        break;
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<List<Cls_Persona>> call, Throwable t) {
+                            }
+                        });
                         break;
                 }
             }
@@ -81,22 +112,45 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 Log.d("error","no entro");
             }
         });
-        Call<List<Cls_Persona>> call2 = personaservicios.listarSerenos();
-        call2.enqueue(new Callback<List<Cls_Persona>>() {
+
+
+        ServiciosIncidencia incidenciasservicios = retrofit.create(ServiciosIncidencia.class);
+        Call<List<Cls_Incidencia>> call3 = incidenciasservicios.listarincidencias();
+        call3.enqueue(new Callback<List<Cls_Incidencia>>() {
             @Override
-            public void onResponse(Call<List<Cls_Persona>> call, Response<List<Cls_Persona>> response) {
+            public void onResponse(Call<List<Cls_Incidencia>> call, Response<List<Cls_Incidencia>> response) {
+                Log.e("Incidencias",response.body().get(0).getId()+"");
                 switch (response.code()){
                     case 200:
-                        serenos_list = (List<Cls_Persona>)response.body();
-                        num_serenos.setText(serenos_list.size()+"");
-                        Log.e("Sereno",response.body().get(3).getNombres()+"");
+                        incidencias = (List<Cls_Incidencia>)response.body();
+                        Log.e("Incidencias",incidencias.get(0).getId()+"");
+                        int num_atendidos=0;
+                        int num_pendientes=0;
+                        for(int i =0;i<incidencias.size();i++){
+                            if(incidencias.get(i).getEstado_incidencia_id()!= null){
+                                Log.e("Estado incidencia",incidencias.get(i).getEstado_incidencia_id().getDescripcion()+"");
+                                if(incidencias.get(i).getEstado_incidencia_id().getDescripcion().equals("CREADO")
+                                        ||incidencias.get(i).getEstado_incidencia_id().getDescripcion().equals("asignado")){
+                                    num_pendientes++;
+                                }
+                                if(incidencias.get(i).getEstado_incidencia_id().getDescripcion().equals("atendido")){
+                                    num_atendidos++;
+                                }
+                            }
+                        }
+                        num_inci_atendidos.setText(num_atendidos+"");
+                        num_inci_pendientes.setText(num_pendientes+"");
                         break;
                 }
             }
             @Override
-            public void onFailure(Call<List<Cls_Persona>> call, Throwable t) {
+            public void onFailure(Call<List<Cls_Incidencia>> call, Throwable t) {
+                Log.e("Incidencias",t.toString()+"");
             }
         });
+
+
+
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -131,15 +185,16 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         serenos_list.add(p2.getNombre()+" "+p2.getApellido());*/
 
         Cls_Persona p1 = new Cls_Persona();
+        Cls_Tipo_Incidencia t1 = new Cls_Tipo_Incidencia("robo",true);
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia("24-07-19","20:20","robo",p1,"Atendido");
-        Cls_Incidencia incidencia2=new Cls_Incidencia("24-07-19","21:30","disturbio",p1,"Atendido");
+        Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,p1);
+        Cls_Incidencia incidencia2=new Cls_Incidencia(new Date(119, 8,14, 16, 50, 6),t1,p1);
+
 
         incidencias.add(incidencia1);
         incidencias.add(incidencia2);
 
-        num_inci_atendidos.setText(incidencias.size()+"");
-        num_inci_pendientes.setText(incidencias.size()+"");
+
 
         serenos.setOnClickListener(new View.OnClickListener() {
             @Override
