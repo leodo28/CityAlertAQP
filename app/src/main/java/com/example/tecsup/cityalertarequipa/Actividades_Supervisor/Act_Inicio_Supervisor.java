@@ -44,6 +44,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
     List<Cls_Persona> serenos_list = new ArrayList<>();
     List<Cls_Persona> personas_list = new ArrayList<>();
     List<Cls_Incidencia> incidencias = new ArrayList<>();
+    int id_supervisor;
     public static String url = "http://34.67.84.216:8090/";
 
     @Override
@@ -67,9 +68,11 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         inci_atendidos=findViewById(R.id.btn_inc_atendidas);
         inci_pendientes =findViewById(R.id.btn_inc_pendientes);
 
+        id_supervisor=2;
+
 
         final ServiciosPersona personaservicios = retrofit.create(ServiciosPersona.class);
-        Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(2);
+        Call<Cls_Persona> call1 = personaservicios.obtenerSupervisor(id_supervisor);
         call1.enqueue(new Callback<Cls_Persona>() {
             @Override
             public void onResponse(Call<Cls_Persona> call, Response<Cls_Persona> response) {
