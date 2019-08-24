@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">City Alert Arequipa</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recuperar_1">Por favor, ingresa tu dirección de correo electrónico asociado, te enviaremos un enlace para restablecer tu contraseña</string>
+    <string name="recuperar_2">El código de recuperación fue enviado a su correo.Por favor ingrese el código.</string>
+    <string name="recuperar_3">¿No llegó el código?</string>
+    <string name="recuperar_4">Reenviar Código</string>
+    <string name="recuperar_5">Ingrese nueva contraseña</string>
+    <string name="recuperar_6">Confirmar nueva contraseña</string>
+    <string name="recuperar_7">Guardar Cambios</string>
+    <string name="text_subrayado"><u>Olvidé mi contraseña</u></string>
+    <string name="text_subrayado2"><u>Registrarme</u></string>
 </resources>
