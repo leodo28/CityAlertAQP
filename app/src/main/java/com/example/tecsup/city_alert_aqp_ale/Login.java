@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -33,9 +35,11 @@ public class Login extends AppCompatActivity {
     Intent intent, intent2;
     ConnectivityManager conMgr;
     int success;
+    int id_login;
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, username;
+    int id;
+    String username;
     List<Cls_Persona> usuarios_final;
 
     private String URL = "http://34.67.84.216:8090";
@@ -77,7 +81,7 @@ public class Login extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
-        id = sharedpreferences.getString(TAG_ID, null);
+        id = sharedpreferences.getInt(TAG_ID, Integer.parseInt(null));
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
         if (session) {
@@ -139,59 +143,38 @@ public class Login extends AppCompatActivity {
         showDialog();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
-        ServiciosPersona servidor = retrofit.create(ServiciosPersona.class);
-        Call<List<Cls_Persona>> call = servidor.listarSerenos();
-        call.enqueue(new Callback<List<Cls_Persona>>() {
+        ServiciosLogin servidor = retrofit.create(ServiciosLogin.class);
+        Call<Cls_Persona> registrar=servidor.VerificarLogin(txt_username.getText().toString(),txt_password.getText().toString());
+        registrar.enqueue(new Callback<Cls_Persona>() {
             @Override
-            public void onResponse(Call<List<Cls_Persona>> call, retrofit2.Response<List<Cls_Persona>> response) {
-                switch (response.code()) {
+            public void onResponse(Call<Cls_Persona> call, Response<Cls_Persona> response) {
+                Log.e("Codigo cancha",response.code()+"");
+                switch (response.code()){
+
                     case 200:
-                        List<Cls_Persona> usuarios = response.body();
-                        for (Cls_Persona p : usuarios) {
-                            usuarios_final.add(p);
-                        }
+                        Cls_Persona user=response.body();
+                        id=user.getId();
+                        Log.d("cancharesponse",user.getId()+"");
 
-                        for (int i = 0; i <= usuarios_final.size() - 1; i++) {
-                            if (usuarios_final.get(i).getDni().equals(txt_username.getText().toString())) {
-                                id = usuarios_final.get(i).getDni();
-                            }
-                        }
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putBoolean(session_status, true);
+                        editor.putString(TAG_ID, password);
+                        editor.putString(TAG_USERNAME, username);
+                        editor.commit();
 
+                        Intent intent2 = new Intent(Login.this, MainActivity.class);
+                        intent2.putExtra(TAG_ID, id);
+                        finish();
+                        startActivity(intent2);
                         break;
+                    case 400:
+                        Toast.makeText(getApplicationContext(),response.body().toString(),Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Cls_Persona>> call, Throwable t) {
-
-            }
-        });
-
-        Call<List<Cls_Persona>> call2 = servidor.listarSerenos();
-        call2.enqueue(new Callback<List<Cls_Persona>>() {
-            @Override
-            public void onResponse(Call<List<Cls_Persona>> call, retrofit2.Response<List<Cls_Persona>> response) {
-                switch (response.code()) {
-                    case 200:
-                        List<Cls_Persona> usuarios = response.body();
-                        for (Cls_Persona p : usuarios) {
-                            usuarios_final.add(p);
-                        }
-
-                        for (int i = 0; i <= usuarios_final.size() - 1; i++) {
-                            if (usuarios_final.get(i).getDni().equals(txt_username.getText().toString())) {
-                                id = usuarios_final.get(i).getDni();
-                            }
-                        }
-
-                        break;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Cls_Persona>> call, Throwable t) {
-
-
+            public void onFailure(Call<Cls_Persona> call, Throwable t) {
+                Log.e("Error login",t.getMessage());
             }
         });
     }
