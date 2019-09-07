@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 
 import com.example.tecsup.city_alert_aqp_ale.Clases.Cls_Persona;
+import com.example.tecsup.city_alert_aqp_ale.Clases.Cls_Usuario;
 
 import java.util.List;
 
@@ -51,8 +52,6 @@ public class Login extends AppCompatActivity {
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
-    String tag_json_obj = "json_obj_req";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +80,6 @@ public class Login extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
-        id = sharedpreferences.getInt(TAG_ID, Integer.parseInt(null));
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
         if (session) {
@@ -144,26 +142,26 @@ public class Login extends AppCompatActivity {
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         ServiciosLogin servidor = retrofit.create(ServiciosLogin.class);
-        Call<Cls_Persona> registrar=servidor.VerificarLogin(txt_username.getText().toString(),txt_password.getText().toString());
-        registrar.enqueue(new Callback<Cls_Persona>() {
+        Call<Cls_Usuario> registrar=servidor.VerificarLogin(username,password);
+        registrar.enqueue(new Callback<Cls_Usuario>() {
             @Override
-            public void onResponse(Call<Cls_Persona> call, Response<Cls_Persona> response) {
-                Log.e("Codigo cancha",response.code()+"");
+            public void onResponse(Call<Cls_Usuario> call, Response<Cls_Usuario> response) {
+                Log.e("Codigo usuario",response.code()+"");
                 switch (response.code()){
 
                     case 200:
-                        Cls_Persona user=response.body();
+                        Cls_Usuario user=response.body();
                         id=user.getId();
                         Log.d("cancharesponse",user.getId()+"");
 
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putBoolean(session_status, true);
-                        editor.putString(TAG_ID, password);
                         editor.putString(TAG_USERNAME, username);
                         editor.commit();
 
                         Intent intent2 = new Intent(Login.this, MainActivity.class);
                         intent2.putExtra(TAG_ID, id);
+                        intent2.putExtra(TAG_USERNAME, username);
                         finish();
                         startActivity(intent2);
                         break;
@@ -173,7 +171,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Cls_Persona> call, Throwable t) {
+            public void onFailure(Call<Cls_Usuario> call, Throwable t) {
                 Log.e("Error login",t.getMessage());
             }
         });
