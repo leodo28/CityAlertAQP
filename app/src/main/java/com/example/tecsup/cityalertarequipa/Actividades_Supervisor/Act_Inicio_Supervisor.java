@@ -132,6 +132,9 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                         for(int i =0;i<incidencias.size();i++){
                             if(incidencias.get(i).getEstado_incidencia_id()!= null){
                                 Log.e("Estado incidencia",incidencias.get(i).getEstado_incidencia_id().getDescripcion()+"");
+                                Log.e("fecha",incidencias.get(i).getFecha_creacion()+"");
+                                Date a = new Date (incidencias.get(i).getFecha_creacion());
+                                Log.e("fecha",a+"");
                                 if(incidencias.get(i).getEstado_incidencia_id().getDescripcion().equals("CREADO")
                                         ||incidencias.get(i).getEstado_incidencia_id().getDescripcion().equals("asignado")){
                                     num_pendientes++;
@@ -187,7 +190,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
         serenos_list.add(p1.getNombre()+" "+p1.getApellido());
         serenos_list.add(p2.getNombre()+" "+p2.getApellido());*/
 
-        Cls_Persona p1 = new Cls_Persona();
+        /*Cls_Persona p1 = new Cls_Persona();
         Cls_Tipo_Incidencia t1 = new Cls_Tipo_Incidencia("robo",true);
 
         Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,p1);
@@ -195,7 +198,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
 
 
         incidencias.add(incidencia1);
-        incidencias.add(incidencia2);
+        incidencias.add(incidencia2);*/
 
 
 
@@ -205,6 +208,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 Intent i = new Intent(getApplicationContext(),Act_SerenosaCargo_Supervisor.class);
                 i.putExtra("supervisor",sup);
                 i.putExtra("serenos", (Serializable) serenos_list);
+                i.putExtra("incidencias", (Serializable) incidencias);
                 startActivity(i);
             }
         });
@@ -215,6 +219,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                 i.putExtra("supervisor",sup);
                 i.putExtra("serenos", (Serializable) serenos_list);
+                i.putExtra("incidencias", (Serializable) incidencias);
                 startActivity(i);
             }
         });
@@ -225,6 +230,7 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
                 Intent i = new Intent(getApplicationContext(),Act_Incidencia_Supervisor.class);
                 i.putExtra("supervisor",sup);
                 i.putExtra("serenos", (Serializable) serenos_list);
+                i.putExtra("incidencias", (Serializable) incidencias);
                 startActivity(i);
             }
         });
@@ -274,42 +280,50 @@ public class Act_Inicio_Supervisor extends AppCompatActivity
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

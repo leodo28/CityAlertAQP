@@ -1,22 +1,24 @@
 package com.example.tecsup.cityalertarequipa.Clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cls_Incidencia {
+public class Cls_Incidencia implements Serializable {
     int id;
     boolean estado;
-    String fechacreacion;
-    Date fecha;
+    long FechaCreacionInt;
     Cls_Tipo_Incidencia tipoIncidenciaId;
     Cls_Persona personaId;
     Cls_Estado_Incidencia estadoIncidenciaId;
     Cls_Persona serenoId;
 
+
     public Cls_Incidencia() {
+
     }
 
-    public Cls_Incidencia(Date fecha, Cls_Tipo_Incidencia tipo_incidencia, Cls_Persona sereno) {
-        this.fecha = fecha;
+
+    public Cls_Incidencia(Cls_Tipo_Incidencia tipo_incidencia, Cls_Persona sereno) {
         this.tipoIncidenciaId = tipo_incidencia;
         this.serenoId = sereno;
     }
@@ -27,14 +29,6 @@ public class Cls_Incidencia {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
     public boolean isEstado() {
@@ -75,5 +69,45 @@ public class Cls_Incidencia {
 
     public void setPersona(Cls_Persona ciudadano) {
         this.personaId = ciudadano;
+    }
+
+    public long getFecha_creacion() {
+        return FechaCreacionInt;
+    }
+
+    public void setFecha_creacion(long fecha_creacion) {
+        this.FechaCreacionInt = fecha_creacion;
+    }
+
+    public Cls_Tipo_Incidencia getTipoIncidenciaId() {
+        return tipoIncidenciaId;
+    }
+
+    public void setTipoIncidenciaId(Cls_Tipo_Incidencia tipoIncidenciaId) {
+        this.tipoIncidenciaId = tipoIncidenciaId;
+    }
+
+    public Cls_Persona getPersonaId() {
+        return personaId;
+    }
+
+    public void setPersonaId(Cls_Persona personaId) {
+        this.personaId = personaId;
+    }
+
+    public Cls_Estado_Incidencia getEstadoIncidenciaId() {
+        return estadoIncidenciaId;
+    }
+
+    public void setEstadoIncidenciaId(Cls_Estado_Incidencia estadoIncidenciaId) {
+        this.estadoIncidenciaId = estadoIncidenciaId;
+    }
+
+    public Cls_Persona getSerenoId() {
+        return serenoId;
+    }
+
+    public void setSerenoId(Cls_Persona serenoId) {
+        this.serenoId = serenoId;
     }
 }

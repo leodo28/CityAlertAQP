@@ -47,6 +47,7 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
         Intent i = getIntent();
         sup=(Cls_Persona) i.getSerializableExtra("supervisor");
         serenos_list=(List<Cls_Persona>)i.getSerializableExtra("serenos");
+        incidencias = (List<Cls_Incidencia>)i.getSerializableExtra("incidencias");
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +67,7 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Cls_Persona p1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
+        /*Cls_Persona p1 = new Cls_Persona("48743655","Luis Alberto","Garcia"," Lopez",
                 "luis@gmail.com","psj s/n"
                 ,"9475849554",-16.429299,-71.519191);
         Cls_Persona p2 = new Cls_Persona("632438844","Alberto Pepe","Cruz"," Rivera",
@@ -80,7 +81,7 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
         incidencia2.setEstado(true);
 
         incidencias.add(incidencia1);
-        incidencias.add(incidencia2);
+        incidencias.add(incidencia2);*/
 
         lv= findViewById(R.id.listv);
 
@@ -134,42 +135,50 @@ public class Act_Incidencia_Supervisor extends AppCompatActivity
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         } else if (id == R.id.perfil) {
             Intent i = new Intent(this,Act_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         } else if (id == R.id.serenos) {
             Intent i = new Intent(this,Act_SerenosaCargo_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.incidencias) {
             Intent i = new Intent(this,Act_Incidencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.ubicacion) {
             Intent i = new Intent(this,Act_Ubicacion_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.telefonos) {
             Intent i = new Intent(this,Act_TelefonoEmergencia_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.editar) {
             Intent i = new Intent(this,Act_Editar_Perfil_Supervisor.class);
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }else if (id == R.id.logout) {
             Intent i = new Intent(this,Act_Inicio_Supervisor.class);
             Toast.makeText(this,"Cerro Sesion",Toast.LENGTH_LONG).show();
             i.putExtra("supervisor",sup);
             i.putExtra("serenos", (Serializable) serenos_list);
+            i.putExtra("incidencias", (Serializable) incidencias);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

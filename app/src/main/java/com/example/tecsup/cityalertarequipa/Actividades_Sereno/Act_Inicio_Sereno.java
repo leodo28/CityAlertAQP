@@ -74,12 +74,12 @@ public class Act_Inicio_Sereno extends AppCompatActivity
 
         Cls_Tipo_Incidencia t1 = new Cls_Tipo_Incidencia("robo",true);
 
-        Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,sereno);
+       /* Cls_Incidencia incidencia1=new Cls_Incidencia(new Date(119, 8,12, 10, 5, 6),t1,sereno);
         Cls_Incidencia incidencia2=new Cls_Incidencia(new Date(119, 8,14, 16, 50, 6),t1,sereno);
 
 
         incidencias.add(incidencia1);
-        incidencias.add(incidencia2);
+        incidencias.add(incidencia2);*/
 
 
         inci_atendidos=findViewById(R.id.btn_inc_atendidos);

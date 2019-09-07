@@ -1,6 +1,8 @@
 package com.example.tecsup.cityalertarequipa.Clases;
 
-public class  Cls_Estado_Incidencia {
+import java.io.Serializable;
+
+public class  Cls_Estado_Incidencia implements Serializable {
     int id;
     String descripcion;
 
