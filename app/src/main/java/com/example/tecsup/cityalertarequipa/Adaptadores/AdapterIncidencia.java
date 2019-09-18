@@ -61,7 +61,7 @@ public class AdapterIncidencia extends BaseAdapter {
         TextView fecha = v.findViewById(R.id.fecha);
         fecha.setText(new Date(incidencias.get(position).getFecha_creacion()).getDay()+"-"
                 +new Date(incidencias.get(position).getFecha_creacion()).getMonth()+"-"
-                +(new Date(incidencias.get(position).getFecha_creacion()).getYear()-100)+"");
+                +(new Date(incidencias.get(position).getFecha_creacion()).getYear())+"");
         return v;
     }
 }

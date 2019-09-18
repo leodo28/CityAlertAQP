@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.tecsup.cityalertarequipa.Clases.Cls_Persona;
 import com.example.tecsup.cityalertarequipa.R;
 
+
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
