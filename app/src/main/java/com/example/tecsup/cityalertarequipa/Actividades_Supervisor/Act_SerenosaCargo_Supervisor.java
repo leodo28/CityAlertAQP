@@ -35,9 +35,9 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
+    HashMap<String, List<String>> expandableListDetail;
     List<Cls_Persona> serenos_list = new ArrayList<Cls_Persona>();
     List<Cls_Incidencia> incidencias = new ArrayList<>();
-    HashMap<String, List<String>> expandableListDetail;
     Cls_Persona sup;
     TextView nombreapp;
 
@@ -76,7 +76,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
         expandableListDetail = ExpandableListDataPump.getData(serenos_list);
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         Collections.reverse(expandableListTitle);
-        expandableListAdapter = new CustomExpandableListAdapter(this, serenos_list, expandableListDetail);
+        expandableListAdapter = new CustomExpandableListAdapter(this, serenos_list, expandableListDetail,sup,serenos_list,incidencias);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
@@ -122,7 +122,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
                                 expandableListTitle.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT
                 ).show();
-
+/*
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                             .get(childPosition).equals("Geolocalizacion")){
                         Intent i = new Intent(getApplicationContext(),Act_Ubicacion_Supervisor.class);
@@ -153,7 +153,7 @@ public class Act_SerenosaCargo_Supervisor extends AppCompatActivity implements N
                 if(expandableListDetail.get(expandableListTitle.get(groupPosition))
                         .get(childPosition).equals("Eliminar")){
 
-                }
+                }*/
 
                 return false;
             }

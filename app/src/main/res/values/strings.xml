@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">City Alert Arequipa</string>
-    <string name="title_activity_iniciosupervisor2">Supervisor</string>
+    <string name="title_activity_iniciosupervisor2">Inicio</string>
+    <string name="title_activity_serenosupervisor">Serenos a Cargo</string>
+    <string name="title_activity_miperfilsupervisor">Mi Perfil</string>
+    <string name="title_activity_incidenciassupervisor">Reporte de Incidencias</string>
+    <string name="title_activity_ubicacionsupervisor">Ubicacion de Serenos</string>
+    <string name="title_activity_telefonosupervisor">Telefonos de Emergencia</string>
+    <string name="title_activity_editarperfilsupervisor">Editar perfil</string>
     <string name="title_activity_sereno">Sereno</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

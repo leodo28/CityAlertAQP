@@ -21,7 +21,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Actividades_Supervisor.Act_Perfil_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_miperfilsupervisor"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
@@ -51,23 +51,23 @@
         </activity>
         <activity
             android:name=".Actividades_Supervisor.Act_SerenosaCargo_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_serenosupervisor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades_Supervisor.Act_Incidencia_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_incidenciassupervisor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades_Supervisor.Act_Ubicacion_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_ubicacionsupervisor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades_Supervisor.Act_TelefonoEmergencia_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_telefonosupervisor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades_Supervisor.Act_Editar_Perfil_Supervisor"
-            android:label="@string/title_activity_iniciosupervisor2"
+            android:label="@string/title_activity_editarperfilsupervisor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades_Sereno.Act_TelefonoEmergencia_sereno"
